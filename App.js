@@ -4,7 +4,9 @@ import { PaperProvider } from "react-native-paper";
 
 import WelcomeScreen from "./WelcomeScreen";
 import NewUser from "./NewUser";
-
+{
+  /* Source: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
+}
 const Stack = createStackNavigator();
 
 export default function App() {
