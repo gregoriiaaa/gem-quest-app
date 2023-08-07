@@ -166,14 +166,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: ".5em",
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },
   button: {
     marginVertical: 2,
     borderRadius: 5,
-    marginTop: "1em",
+    marginTop: 1,
   },
   buttonText: {
     color: "white",
