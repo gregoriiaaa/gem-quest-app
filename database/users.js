@@ -116,9 +116,9 @@ async function addNewUser(user) {
     //#endregion
 
     const docRef = await addDoc(collection(db, "users"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815,
+      name: user.name,
+      email: user.email,
+      dateOfBirth: user.dateOfBirth,
     });
 
     console.log("Document written with ID: ", docRef.id);
