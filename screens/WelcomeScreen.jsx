@@ -37,11 +37,7 @@ const WelcomeScreen = ({ navigation }) => {
         <Button style={styles.button} mode="outlined">
           <Text>Log In</Text>
         </Button>
-        <Text textColor="#21005D">
-          <small>
-            <em>Forgot password?</em>
-          </small>
-        </Text>
+        <Text textColor="#21005D">Forgot password?</Text>
       </View>
     </View>
   );

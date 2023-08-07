@@ -74,7 +74,7 @@ const CreateAccountForm = () => {
     birthday: Yup.string()
       .required("Bithday is required")
       .matches(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])\/(1923|200[0-7])$/,
+        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/,
         "Must be in the format: MM/DD/YYYY"
       ),
     pronouns: Yup.string()
