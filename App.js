@@ -1,9 +1,9 @@
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { PaperProvider } from "react-native-paper";
 
-import WelcomeScreen from "./WelcomeScreen";
-import NewUser from "./NewUser";
+import WelcomeScreen from "./screens/WelcomeScreen";
+import NewUser from "./screens/NewUser";
 {
   /* Source: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
 }
@@ -15,8 +15,8 @@ export default function App() {
       <NavigationContainer>
         {/* screenOptions={{ headerShown: false }} */}
         <Stack.Navigator>
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-          <Stack.Screen name="NewUser" component={NewUser} />
+          <Stack.Screen name="Welcome Screen" component={WelcomeScreen} />
+          <Stack.Screen name="Create Account" component={NewUser} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

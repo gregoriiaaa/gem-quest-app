@@ -7,7 +7,7 @@ import { Button } from "react-native-paper";
 }
 const WelcomeScreen = ({ navigation }) => {
   const handleNewUserPress = () => {
-    navigation.navigate("NewUser");
+    navigation.navigate("Create Account");
   };
 
   return (
@@ -19,19 +19,22 @@ const WelcomeScreen = ({ navigation }) => {
       ></View>
       <View style={styles.imageContainer}>
         <Image
-          source={require("./assets/gemQuest.png")}
+          source={require("../assets/gemQuest.png")}
           style={styles.image}
           resizeMode="contain"
         ></Image>
       </View>
       <View style={styles.buttonContainer}>
-        {" "}
         <Button
           style={styles.button}
           mode="contained"
           onPress={handleNewUserPress}
           buttonColor="#21005D"
+          textColor="#FFFFFF"
         >
+          <Text>New User</Text>
+        </Button>
+        <Button style={styles.button} mode="outlined">
           <Text>Log In</Text>
         </Button>
         <Text textColor="#21005D">
@@ -39,13 +42,6 @@ const WelcomeScreen = ({ navigation }) => {
             <em>Forgot password?</em>
           </small>
         </Text>
-        <Button
-          style={styles.button}
-          mode="contained-tonal"
-          onPress={handleNewUserPress}
-        >
-          <Text>New User</Text>
-        </Button>
       </View>
     </View>
   );
