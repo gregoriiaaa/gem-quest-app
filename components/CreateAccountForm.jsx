@@ -77,12 +77,7 @@ const CreateAccountForm = () => {
         /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/,
         "Must be in the format: MM/DD/YYYY"
       ),
-    pronouns: Yup.string()
-      .required("Pronouns are required")
-      .matches(
-        /^(they\/them|she\/her|he\/him)$/i,
-        "Must be in the format: They/Them, She/Her, He/Him."
-      ),
+    pronouns: Yup.string().required("Pronouns are required"),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters")
@@ -140,7 +135,6 @@ const CreateAccountForm = () => {
             label="Password"
             formikProps={formikProps}
             formikKey="password"
-            placeholder="********"
             secureTextEntry={true}
           />
 
@@ -148,7 +142,6 @@ const CreateAccountForm = () => {
             label="Confirm Password"
             formikProps={formikProps}
             formikKey="confirmpassword"
-            placeholder="********"
             secureTextEntry={true}
           />
 
