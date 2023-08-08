@@ -10,6 +10,10 @@ const WelcomeScreen = ({ navigation }) => {
     navigation.navigate("Create Account");
   };
 
+  const handleLogInPress = () => {
+    navigation.navigate("LogIn");
+  };
+
   return (
     <View style={styles.container}>
       <View
@@ -34,10 +38,16 @@ const WelcomeScreen = ({ navigation }) => {
         >
           <Text>New User</Text>
         </Button>
-        <Button style={styles.button} mode="outlined">
+        <Button
+          style={styles.button}
+          mode="outlined"
+          onPress={handleLogInPress}
+        >
           <Text>Log In</Text>
         </Button>
-        <Text textColor="#21005D">Forgot password?</Text>
+        <Text style={styles.forgotPassword} textColor="#21005D">
+          Forgot password?
+        </Text>
       </View>
     </View>
   );
@@ -65,6 +75,11 @@ const styles = StyleSheet.create({
   button: {
     width: "150px",
     marginTop: "1em",
+  },
+  forgotPassword: {
+    marginTop: ".4em",
+    fontStyle: "italic",
+    fontSize: "x-small",
   },
 });
 
