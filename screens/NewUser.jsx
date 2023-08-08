@@ -1,4 +1,3 @@
-import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Avatar } from "react-native-paper";
 import CreateAccountForm from "../components/CreateAccountForm";
