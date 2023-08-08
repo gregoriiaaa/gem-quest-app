@@ -1,5 +1,4 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
@@ -48,7 +47,7 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const CreateAccountForm = () => {
+const CreateAccountForm = ({ navigation }) => {
   const initialValues = {
     name: "",
     email: "",
@@ -144,15 +143,26 @@ const CreateAccountForm = () => {
             formikKey="confirmpassword"
             secureTextEntry={true}
           />
-
-          <Button
-            onPress={formikProps.handleSubmit}
-            mode="contained"
-            style={styles.button}
-            buttonColor="#21005D"
-          >
-            Submit
-          </Button>
+          <View style={styles.buttonContainer}>
+            <Button
+              onPress={() => navigation.navigate("Welcome Screen")}
+              mode="outlined"
+              style={styles.button}
+              icon="arrow-left"
+            >
+              Back
+            </Button>
+            <Button
+              onPress={formikProps.handleSubmit}
+              mode="contained"
+              style={styles.button}
+              buttonColor="#21005D"
+              icon="arrow-right"
+              contentStyle={styles.submitButtonContent}
+            >
+              Submit
+            </Button>
+          </View>
         </View>
       )}
     </Formik>
@@ -174,10 +184,19 @@ const styles = StyleSheet.create({
     marginVertical: 2,
     borderRadius: 5,
     marginTop: "1em",
+    width: "150px",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "2em",
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+  },
+  submitButtonContent: {
+    flexDirection: "row-reverse",
   },
 });
 
