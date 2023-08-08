@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#6770e0",
     fontWeight: "bold",
+    top: 25,
   },
 
   progress: {
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     bottom: 10,
+    paddingLeft: 40,
   },
 });
 

@@ -8,6 +8,7 @@ const PointsBar = (props) => {
   return (
     <View>
       <View style={styles.container}>
+        
         <View style={styles.barContainer}>
           <Text style={styles.totalPts}>990/1000</Text>
 

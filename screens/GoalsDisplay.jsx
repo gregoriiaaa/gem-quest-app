@@ -36,32 +36,6 @@ const GoalsDisplay = (props) => {
       <View style={styles.tabs}>
         <Tabs></Tabs>
       </View>
-
-      <ScrollView style={styles.goalsContainer}>
-        <View style={styles.goalsLayout}>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-        </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -71,21 +45,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   pointsBarContainer: {
-    flex: 1,
+    paddingBottom: 40,
   },
-  goalsContainer: {
-    flex: 1,
-  },
-  goalsLayout: {
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  goal: {
-    flex: 1,
-    padding: 40,
-  },
+
   tabs: {
     flex: 1,
+    justifyContent: "flex-start",
   },
 });
 
