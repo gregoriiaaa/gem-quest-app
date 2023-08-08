@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   goal: {
     flex: 1,
-    padding: 40,
+    padding: 35,
   },
   tabs: {
     flex: 1,
