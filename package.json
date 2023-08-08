@@ -12,6 +12,7 @@
     "@expo/webpack-config": "^18.1.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
     "expo": "^48.0.20",
