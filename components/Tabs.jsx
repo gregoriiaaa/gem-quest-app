@@ -15,7 +15,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import GemsDisplay from "../screens/GemsDisplay";
 
-function GoalsTab() {
+const GoalsTab = (props) => {
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={styles.goalsContainer}>
@@ -45,9 +45,9 @@ function GoalsTab() {
       </ScrollView>
     </View>
   );
-}
+};
 
-function GemsTab() {
+const GemsTab = (props) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>

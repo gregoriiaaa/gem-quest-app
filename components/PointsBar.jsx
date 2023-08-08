@@ -1,26 +1,25 @@
 import * as React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
-
 import { Avatar } from "react-native-paper";
-
 import * as Progress from "react-native-progress";
 
 /** 
  * Returns a component that renders the main points bar, including the points
  * total and remaining quantity until the next gem is acquired.
- *
- * @param {Float} progress (TODO: Convert to fraction string) Total progress.
+ * 
+ * @param {progress, icon} props
+ * @param {float} progress (TODO: Convert to fraction string) Total progress.
  * @param {string} icon (TODO: Change gem avatar to custom circle) Gem icon.
- * @return {View} PointsBar
+ * @returns {View} PointsBar
  */
 const PointsBar = (props) => {
   return (
     <View>
       <View style={styles.container}>
         {/* Points total and bar */}
-        <View style={styles.bar}>
-          <Text style={styles.totalPts}>{props.progress}</Text>
+        <View style={styles.progressBar}>
+          <Text style={styles.progress}>{props.progress}</Text>
           <Progress.Bar
             progress={props.progress}
             color="#fde3e7"
@@ -57,11 +56,11 @@ const styles = StyleSheet.create({
     marginTop: 100,
     flexDirection: "row",
   },
-  bar: {
+  progressBar: {
     justifyContent: "center",
     left: 20,
   },
-  totalPts: {
+  progress: {
     textAlign: "center",
     paddingBottom: 5,
     left: 25,
