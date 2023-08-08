@@ -5,6 +5,7 @@ import {
   Text,
   ScrollView,
   View,
+  Image,
   StyleSheet,
   SafeAreaView,
 } from "react-native";
@@ -12,11 +13,26 @@ import { Avatar, Button, Card } from "react-native-paper";
 import Goal from "../components/Goal";
 import PointsBar from "../components/PointsBar";
 
+const Gems = {
+  Amber: require("../assets/gems/Amber.png"),
+  Pearl: require("../assets/gems/Pearl.png"),
+  Ruby: require("../assets/gems/Ruby.png"),
+  Jade: require("../assets/gems/Jade.png"),
+  Sapphire: require("../assets/gems/Sapphire.png"),
+  Emerald: require("../assets/gems/Emerald.png"),
+  Amethyst: require("../assets/gems/Amethyst.png"),
+  RoseQuartz: require("../assets/gems/RoseQuartz.png"),
+  Diamond: require("../assets/gems/Diamond.png"),
+};
+
 const GoalsDisplay = (props) => {
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <PointsBar progress={0.3}></PointsBar>
-      <ScrollView style={styles.goalsContainer}>
+      <View>
+        <PointsBar progress={props.progress} icon={Gems.Amethyst}></PointsBar>
+      </View>
+
+      {/* <ScrollView style={styles.goalsContainer}>
         <Goal
           description="post 5 quests"
           progress={3 / 5}
@@ -24,7 +40,7 @@ const GoalsDisplay = (props) => {
         ></Goal>
         <Goal></Goal>
         <Goal></Goal>
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };
@@ -33,13 +49,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  goalsContainer: {
-    columnGap: 40,
-  },
-  image: {
-    height: "100%",
-    width: "100%",
-  },
+  goalsContainer: {},
 });
 
 export default GoalsDisplay;

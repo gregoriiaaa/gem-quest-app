@@ -25,7 +25,10 @@ export default function App() {
     //     </Stack.Navigator>
     //   </NavigationContainer>
     // </PaperProvider>
-    <GoalsDisplay></GoalsDisplay>
+    <GoalsDisplay
+      progress={3 / 5}
+      icon="../assets/gems/Amethyst.png"
+    ></GoalsDisplay>
   );
 }
 
