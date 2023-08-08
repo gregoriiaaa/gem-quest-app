@@ -10,9 +10,9 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Avatar, Button, Card } from "react-native-paper";
-import Goal from "../components/Goal";
-import PointsBar from "../components/PointsBar";
-import Tabs from "../components/Tabs";
+import Goal from "../../components/gems/Goal";
+import PointsBar from "../../components/gems/PointsBar";
+import Tabs from "../../components/gems/Tabs";
 
 const Gems = {
   Amber: require("../assets/gems/Amber.png"),

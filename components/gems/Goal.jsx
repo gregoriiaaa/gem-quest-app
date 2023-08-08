@@ -6,11 +6,11 @@ import { Avatar, Card, Text } from "react-native-paper";
 import GoalProgress from "./GoalProgress";
 
 /**
- * Returns a Goal component; a Card with a Progress Bar.
- * @param {description, progress} props 
+ * Returns a Goal component; a Card with a nested Progress Bar.
+ * @param {description, progress} props
  * @param {string} description Goal description
  * @param {float} progress (TODO: Convert to fraction string) Total progress.
- * @returns {Card} Goal 
+ * @returns {Card} Goal
  */
 const Goal = (props) => {
   return (
@@ -32,7 +32,7 @@ const Goal = (props) => {
   );
 };
 
-/** 
+/**
  *  Styles are slightly forced with hard-coded numerical values.
  *  May not be accurately represented on different models/devices.
  */

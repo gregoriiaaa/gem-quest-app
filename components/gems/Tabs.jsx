@@ -9,11 +9,11 @@ import {
   StyleSheet,
   SafeAreaView,
 } from "react-native";
-import Goal from "../components/Goal";
+import Goal from "./Goal";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import GemsDisplay from "../screens/GemsDisplay";
+import GemsDisplay from "../../screens/gems/GemsDisplay";
 
 const GoalsTab = (props) => {
   return (
@@ -53,7 +53,7 @@ const GemsTab = (props) => {
       <Text>Settings!</Text>
     </View>
   );
-}
+};
 
 const Tab = createMaterialTopTabNavigator();
 

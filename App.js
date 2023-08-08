@@ -5,9 +5,9 @@ import { PaperProvider } from "react-native-paper";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import NewUser from "./screens/NewUser";
 
-import Goal from "./components/Goal";
-import GoalsDisplay from "./screens/GoalsDisplay";
-import Tabs from "./components/Tabs";
+import Goal from "./components/gems/Goal";
+import GoalsDisplay from "./screens/gems/GoalsDisplay";
+import Tabs from "./components/gems/Tabs";
 import { View, StyleSheet, SafeAreaView } from "react-native";
 
 {

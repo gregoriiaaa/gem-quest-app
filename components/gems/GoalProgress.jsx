@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet } from "react-native";
 
 import * as Progress from "react-native-progress";
 
+/**
+ * Returns a Progress Bar component to be used inside a Goal component.
+ * @param {progress} props 
+ * @param {float} progress (TODO: Convert to fraction string) Progress on a goal.
+ * @returns {GoalProgress}
+ */
 const GoalProgress = (props) => {
   const [progress, setProgress] = useState(0);
 
