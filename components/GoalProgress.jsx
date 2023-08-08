@@ -7,7 +7,7 @@ import * as Progress from "react-native-progress";
 const GoalProgress = (props) => {
   const [progress, setProgress] = useState(0);
 
-  return <Progress.Bar progress={0.3} width={200} />;
+  return <Progress.Bar progress={props.progress} width={200} />;
 };
 
 const styles = StyleSheet.create({});

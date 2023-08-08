@@ -13,7 +13,8 @@ const Goal = (props) => {
         left={(props) => <Avatar.Icon {...props} icon={props.icon} />}
       />
       <Card.Content>
-        <GoalProgress></GoalProgress>
+        <Text>{props.progress}</Text>
+        <GoalProgress progress={props.progress}></GoalProgress>
       </Card.Content>
     </Card>
   );
@@ -21,6 +22,7 @@ const Goal = (props) => {
 
 const styles = StyleSheet.create({
   goalsCard: {
+    height: 100,
     width: 300,
     backgroundColor: "#bd92cd",
   },
@@ -28,6 +30,8 @@ const styles = StyleSheet.create({
   description: {
     color: "#ffffff",
   },
+
+  progress: {},
 });
 
 export default Goal;
