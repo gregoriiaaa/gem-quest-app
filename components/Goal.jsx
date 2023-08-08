@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 import { Avatar, Button, Card, ProgressBar, Text } from "react-native-paper";
 import GoalProgress from "./GoalProgress";
 
@@ -13,8 +13,10 @@ const Goal = (props) => {
         left={(props) => <Avatar.Icon {...props} icon={props.icon} />}
       />
       <Card.Content>
-        <Text>{props.progress}</Text>
-        <GoalProgress progress={props.progress}></GoalProgress>
+        <View style={styles.progress}>
+          <Text style={styles.completion}>{props.progress}</Text>
+          <GoalProgress progress={props.progress}></GoalProgress>
+        </View>
       </Card.Content>
     </Card>
   );
@@ -22,16 +24,31 @@ const Goal = (props) => {
 
 const styles = StyleSheet.create({
   goalsCard: {
-    height: 100,
+    flex: 1,
     width: 300,
     backgroundColor: "#bd92cd",
+    borderColor: "#c6c8c6",
+    borderWidth: 2,
   },
 
   description: {
+    textAlign: "center",
     color: "#ffffff",
+    fontWeight: "bold",
   },
 
-  progress: {},
+  completion: {
+    textAlign: "center",
+    color: "#6770e0",
+    fontWeight: "bold",
+  },
+
+  progress: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 10,
+  },
 });
 
 export default Goal;

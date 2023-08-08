@@ -7,7 +7,8 @@ import NewUser from "./screens/NewUser";
 
 import Goal from "./components/Goal";
 import GoalsDisplay from "./screens/GoalsDisplay";
-import { StyleSheet, SafeAreaView } from "react-native";
+import Tabs from "./components/Tabs";
+import { View, StyleSheet, SafeAreaView } from "react-native";
 
 {
   /* Source: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
@@ -25,6 +26,7 @@ export default function App() {
     //     </Stack.Navigator>
     //   </NavigationContainer>
     // </PaperProvider>
+
     <GoalsDisplay
       progress={700 / 1000}
       icon="../assets/gems/Amethyst.png"
