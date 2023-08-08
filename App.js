@@ -26,7 +26,7 @@ export default function App() {
     //   </NavigationContainer>
     // </PaperProvider>
     <GoalsDisplay
-      progress={3 / 5}
+      progress={700 / 1000}
       icon="../assets/gems/Amethyst.png"
     ></GoalsDisplay>
   );
