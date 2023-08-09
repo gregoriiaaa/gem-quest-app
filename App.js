@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>HELLO CHRIS!</Text>
+      {/* <button onClick={()=> addNew} >Add User</button> */}
       <StatusBar style="auto" />
     </View>
   );
