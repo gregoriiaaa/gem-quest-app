@@ -7,6 +7,7 @@ import GoalProgress from "./GoalProgress";
 
 /**
  * Returns a Goal component; a Card with a nested Progress Bar.
+ * @author Randy Nguyen
  * @param {description, progress} props
  * @param {string} description Goal description
  * @param {float} progress (TODO: Convert to fraction string) Total progress.
@@ -35,6 +36,7 @@ const Goal = (props) => {
 /**
  *  Styles are slightly forced with hard-coded numerical values.
  *  May not be accurately represented on different models/devices.
+ *  Based off Figma iPhone 14 dimensions.
  */
 const styles = StyleSheet.create({
   goal: {

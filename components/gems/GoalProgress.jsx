@@ -1,16 +1,21 @@
 import { useState } from "react";
 
-import { StyleSheet } from "react-native";
-
 import * as Progress from "react-native-progress";
 
 /**
  * Returns a Progress Bar component to be used inside a Goal component.
+ * @author Randy Nguyen
  * @param {progress} props 
- * @param {float} progress (TODO: Convert to fraction string) Progress on a goal.
- * @returns {GoalProgress}
+ * (TODO: Convert float to fraction string) 
+ * @param {float} progress Progress on a goal.
+ * @returns {Progress.Bar} GoalProgress
  */
 const GoalProgress = (props) => {
+  /**
+   * TODO:
+   *  Update the state of the goal's progress bar when a related
+   *  action is completed.
+   */
   const [progress, setProgress] = useState(0);
 
   return (
@@ -26,7 +31,5 @@ const GoalProgress = (props) => {
     />
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default GoalProgress;

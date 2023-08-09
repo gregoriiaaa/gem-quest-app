@@ -1,67 +1,33 @@
 import * as React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  ImageBackground,
-  Text,
-  ScrollView,
-  View,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
-import Goal from "./Goal";
+
+import { View, StyleSheet } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import GemsDisplay from "../../screens/gems/GemsDisplay";
-
-const GoalsTab = (props) => {
-  return (
-    <View style={styles.mainContainer}>
-      <ScrollView style={styles.goalsContainer}>
-        <View style={styles.goalsLayout}>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-          <View style={styles.goal}>
-            <Goal
-              description="post 5 quests (5 pts)"
-              progress={3 / 5}
-              icon="../assets/gemQuest.png"
-            ></Goal>
-          </View>
-        </View>
-      </ScrollView>
-    </View>
-  );
-};
-
-const GemsTab = (props) => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-};
+import GoalsTab from "./GoalsTab";
+import GemsTab from "./GemsTab";
 
 const Tab = createMaterialTopTabNavigator();
 
+/**
+ * Returns a Tabs component that can navigate between the "goals"
+ * and "gems" layouts. Used in the main GemScreen component.
+ * 
+ * @author Randy Nguyen
+ * @param {*} props 
+ * @returns {View} Tabs
+ */
 const Tabs = (props) => {
+  /**
+   *  Maybe have user info as the parameter, which is then
+   *  propagated down into the "GoalsTab" and "GemsTab" components.
+   */
   return (
-    <View style={styles.navContainer}>
+    <View style={styles.tabs}>
       <NavigationContainer>
         <Tab.Navigator>
+          {/* Add more tabs here if you'd like */}
           <Tab.Screen name="GOALS" component={GoalsTab} />
           <Tab.Screen name="GEMS" component={GemsTab} />
         </Tab.Navigator>
@@ -74,21 +40,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: "flex-start",
-  },
-  navContainer: {
-    flex: 1,
-  },
-
-  goalsContainer: {
-    flex: 1,
-  },
-  goalsLayout: {
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  goal: {
-    flex: 1,
-    padding: 35,
   },
   tabs: {
     flex: 1,

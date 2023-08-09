@@ -5,10 +5,8 @@ import { PaperProvider } from "react-native-paper";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import NewUser from "./screens/NewUser";
 
-import Goal from "./components/gems/Goal";
-import GoalsDisplay from "./screens/gems/GoalsDisplay";
-import Tabs from "./components/gems/Tabs";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+/** Gem Imports */
+import GemScreen from "./screens/gems/GemScreen";
 
 {
   /* Source: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
@@ -27,15 +25,9 @@ export default function App() {
     //   </NavigationContainer>
     // </PaperProvider>
 
-    <GoalsDisplay
+    <GemScreen
       progress={700 / 1000}
       icon="../assets/gems/Amethyst.png"
-    ></GoalsDisplay>
+    ></GemScreen>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
