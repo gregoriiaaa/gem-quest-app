@@ -1,3 +1,9 @@
+/******************************************************************************************************
+ * IMPORTANT: THIS FILE IS NOT READY LOL
+ *  (i left all these comments to help me qrite the quest quieries faster)
+ ******************************************************************************************************
+ */
+
 // import db from "./FirebaseConfig.js";
 // import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
 // import User from "../classes/User.js";

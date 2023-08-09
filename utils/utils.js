@@ -1,5 +1,6 @@
 import User from "../classes/User.js";
 
+// I use this function for the queries stuff
 export default function transformFbUserToJsUser(uid, userObject) {
   return new User(
     uid,
@@ -21,3 +22,5 @@ export default function transformFbUserToJsUser(uid, userObject) {
     userObject.topArtist
   );
 }
+
+// Feel free to add any util functions you need!

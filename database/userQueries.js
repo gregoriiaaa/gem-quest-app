@@ -1,31 +1,7 @@
 import db from "./FirebaseConfig.js";
-import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import User from "../classes/User.js";
 import transformFbUserToJsUser from "../utils/utils.js";
-
-/** Adds a new user with a firebase auto-generated id to the database.
- *    @note Use this function if you want a new user that doesn't also have authenticated user credentials.
- *
- *    @params user: Javascript Class Object
- *    @returns userObject
- */
-async function addNewUserNoAuth(user) {
-  try {
-    if (!user || !(user instanceof User)) {
-      throw Error(
-        "Invalid user object. User object cannot be null and must be an instance of the User class."
-      );
-    }
-
-    const userObject = user.toPlainJavaScriptObject();
-
-    const docRef = await addDoc(collection(db, "users"), userObject);
-
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
 
 /** Takes a User Javascript Class Object and overwrites the corresponding Firebase user document
  *  (according to the uid), or creates a new Firebase user document if it doesn't already exist.
@@ -75,7 +51,7 @@ export async function getUserById(uid) {
   }
 }
 
-/** Testing below */
+/** You can ignore the code below; it was just me testing the functions above */
 
 // const user = new User(
 //   "69",
