@@ -62,9 +62,9 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
+    // await sleep(500);
     //alert(JSON.stringify(values, null, 2));
-    authService.LogIn(values.email, values.password);
+    await authService.LogIn(values.email, values.password);
   };
 
   return (

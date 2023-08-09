@@ -91,10 +91,15 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
     console.log(values);
     //alert(JSON.stringify(values, null, 2));
-    authService.SignUp(values.name, values.email, values.password, values.birthday, values.pronouns);
+    await authService.SignUp(
+      values.name,
+      values.email,
+      values.password,
+      values.birthday,
+      values.pronouns
+    );
   };
 
   return (
