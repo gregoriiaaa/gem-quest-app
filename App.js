@@ -26,10 +26,10 @@ export default function App() {
     //   </NavigationContainer>
     // </PaperProvider>
 
-    // <GemScreen
-    //   progress={700 / 1000}
-    //   icon="../assets/gems/Amethyst.png"
-    // ></GemScreen>
-    <GemAcquisition color="#ec8bee" gem="AMETHYST"></GemAcquisition>
+    <GemScreen
+      progress={700 / 1000}
+      icon="../assets/gems/Amethyst.png"
+    ></GemScreen>
+    // <GemAcquisition color="#ec8bee" gem="AMETHYST"></GemAcquisition>
   );
 }

@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#6770e0",
     fontWeight: "bold",
-    top: 25,
+    top: 10,
   },
 });
 
