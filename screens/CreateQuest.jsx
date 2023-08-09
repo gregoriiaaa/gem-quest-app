@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import QuestForm from "..\components\QuestForm.jsx";
+import QuestForm from "../components/QuestForm.jsx";
 
 const CreateQuest = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { TextInput, Text, Button, DropDown } from "react-native-paper";
+import { TextInput, Text, Button, Picker } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
 //import CalendarPicker from 'react-native-calendar-picker';
@@ -48,7 +48,7 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const createQuestForm = ({ navigation }) => {
+const QuestForm = ({ navigation }) => {
   const initialValues = {
     title: "",
     date: "",
@@ -134,17 +134,6 @@ const createQuestForm = ({ navigation }) => {
             formikProps={formikProps}
             formikKey="time"
             placeholder="00:00am"
-          />
-
-          <DropDown
-            label={"Age Group"}
-            mode={"outlined"}
-            visible={showDropDown}
-            showDropDown={() => setShowDropDown(true)}
-            onDismiss={() => setShowDropDown(false)}
-            list={ageList}
-            formikProps={formikProps}
-            formikKey="time"
           />
 
           <TextInputLiveFeedback
