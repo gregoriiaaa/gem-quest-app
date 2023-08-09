@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import authService from "../authService.jsx";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -61,8 +62,9 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
-    alert(JSON.stringify(values, null, 2));
+    // await sleep(500);
+    //alert(JSON.stringify(values, null, 2));
+    await authService.LogIn(values.email, values.password);
   };
 
   return (
