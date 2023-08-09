@@ -94,7 +94,7 @@ const CreateAccountForm = ({ navigation }) => {
     await sleep(500);
     console.log(values);
     //alert(JSON.stringify(values, null, 2));
-    authService.SignUp(values.email, values.password);
+    authService.SignUp(values.name, values.email, values.password, values.birthday, values.pronouns);
   };
 
   return (
