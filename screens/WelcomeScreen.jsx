@@ -14,9 +14,9 @@ const WelcomeScreen = ({ navigation }) => {
     navigation.navigate("LogIn");
   };
 
-  // ADDED THE FOLLOWING FUNCTION FOR TESTING MY HOME PAGE WITHOUT LOGGIN IN
-  const handleHomeScreenPress = () => {
-    console.log("HELLO WORLD");
+  // ADDED THE FOLLOWING FUNCTION FOR ACCESS TO THE NAV BAR LOGGIN IN
+  const handleLayoutPress = () => {
+    // console.log("HELLO WORLD");
     navigation.navigate("LayoutScreen");
   };
 
@@ -54,11 +54,11 @@ const WelcomeScreen = ({ navigation }) => {
         <Text style={styles.forgotPassword} textColor="#21005D">
           Forgot password?
         </Text>
-        {/* ADDED THE FOLLOWING BUTTON FOR TESTING MY HOME PAGE WITHOUT LOGGIN IN */}
+        {/* ADDED THE FOLLOWING BUTTON FOR ACCESS TO THE NAV BAR LOGGIN IN */}
         <Button
           style={styles.button}
           mode="outlined"
-          onPress={handleHomeScreenPress}
+          onPress={handleLayoutPress}
         >
           <Text>Go to Home Screen</Text>
         </Button>
