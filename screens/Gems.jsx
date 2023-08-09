@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import GemScreen from "./gems/GemScreen";
 
 const Gems = () => {
   return (
-    <View style={styles.container}>
-      <Text>Welcome to the Gems page!</Text>
-      {/* Add other content for the Gems page here */}
-    </View>
+    
+    <GemScreen progress={990} maxProgress={1250}></GemScreen>
   );
 };
 

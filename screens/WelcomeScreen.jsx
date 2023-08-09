@@ -14,6 +14,12 @@ const WelcomeScreen = ({ navigation }) => {
     navigation.navigate("LogIn");
   };
 
+  // ADDED THE FOLLOWING FUNCTION FOR ACCESS TO THE NAV BAR LOGGIN IN
+  const handleLayoutPress = () => {
+    // console.log("HELLO WORLD");
+    navigation.navigate("LayoutScreen");
+  };
+
   return (
     <View style={styles.container}>
       <View
@@ -48,6 +54,12 @@ const WelcomeScreen = ({ navigation }) => {
         <Text style={styles.forgotPassword} textColor="#21005D">
           Forgot password?
         </Text>
+        {/* ADDED THE FOLLOWING BUTTON FOR ACCESS TO THE NAV BAR LOGGIN IN */}
+        <Button
+          style={styles.button}
+          mode="outlined"
+          onPress={handleLayoutPress}
+        ></Button>
       </View>
     </View>
   );

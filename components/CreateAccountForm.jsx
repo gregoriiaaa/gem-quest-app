@@ -91,10 +91,22 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
+<<<<<<< HEAD
     await sleep(500);
     console.log(values);
     //alert(JSON.stringify(values, null, 2));
     authService.SignUp(values.name, values.email, values.password, values.birthday, values.pronouns);
+=======
+    console.log(values);
+    //alert(JSON.stringify(values, null, 2));
+    await authService.SignUp(
+      values.name,
+      values.email,
+      values.password,
+      values.birthday,
+      values.pronouns
+    );
+>>>>>>> 9b7c71002f1b6d55958d3035523e8ab44543553b
   };
 
   return (
@@ -156,7 +168,10 @@ const CreateAccountForm = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={formikProps.handleSubmit}
+              onPress={() => {
+                // formikProps.handleSubmit();
+                navigation.navigate("BuildProfile");
+              }}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -179,7 +194,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: ".5em",
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },
