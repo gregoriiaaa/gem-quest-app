@@ -1,10 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-<<<<<<< HEAD
 import { TextInput, Text, Button } from "react-native-paper";
-=======
-import { TextInput, Text, Button, Picker } from "react-native-paper";
->>>>>>> 9b7c71002f1b6d55958d3035523e8ab44543553b
 import { Formik } from "formik";
 import * as Yup from "yup";
 //import CalendarPicker from 'react-native-calendar-picker';
@@ -68,23 +64,11 @@ const QuestForm = ({ navigation }) => {
     title: Yup.string()
       .min(2, "Must be at least 2 characters")
       .max(40, "Must be less than 40 characters")
-<<<<<<< HEAD
       .required("Event title is required"),
     date: Yup.string()
       .required("Event date is required")
       .matches(
         /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/,
-=======
-      .required("Event title is required")
-      .matches(
-        /^([a-zA-Z]+)?$/,
-        "Please enter a valid title using only letters"
-      ),
-    date: Yup.string()
-      .required("Event date is required")
-      .matches(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{4}$/,
->>>>>>> 9b7c71002f1b6d55958d3035523e8ab44543553b
         "Must be in the format: MM/DD/YYYY"
       ),
     time: Yup.string()
@@ -149,7 +133,6 @@ const QuestForm = ({ navigation }) => {
           />
 
           <TextInputLiveFeedback
-<<<<<<< HEAD
             label="Restaurant"
             formikProps={formikProps}
             formikKey="restaurant"
@@ -170,23 +153,6 @@ const QuestForm = ({ navigation }) => {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigation.navigate("LayoutScreen")}
-=======
-            label="Password"
-            formikProps={formikProps}
-            formikKey="password"
-            secureTextEntry={true}
-          />
-
-          <TextInputLiveFeedback
-            label="Confirm Password"
-            formikProps={formikProps}
-            formikKey="confirmpassword"
-            secureTextEntry={true}
-          />
-          <View style={styles.buttonContainer}>
-            <Button
-              onPress={() => navigation.navigate("Welcome Screen")}
->>>>>>> 9b7c71002f1b6d55958d3035523e8ab44543553b
               mode="outlined"
               style={styles.button}
               icon="arrow-left"
