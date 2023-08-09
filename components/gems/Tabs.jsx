@@ -13,9 +13,9 @@ const Tab = createMaterialTopTabNavigator();
 /**
  * Returns a Tabs component that can navigate between the "goals"
  * and "gems" layouts. Used in the main GemScreen component.
- * 
+ *
  * @author Randy Nguyen
- * @param {*} props 
+ * @param {*} props
  * @returns {View} Tabs
  */
 const Tabs = (props) => {
@@ -25,13 +25,11 @@ const Tabs = (props) => {
    */
   return (
     <View style={styles.tabs}>
-      <NavigationContainer>
         <Tab.Navigator>
           {/* Add more tabs here if you'd like */}
           <Tab.Screen name="GOALS" component={GoalsTab} />
           <Tab.Screen name="GEMS" component={GemsTab} />
         </Tab.Navigator>
-      </NavigationContainer>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { StyleSheet } from "react-native";
+import { Text, Button, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 import { ProgressButton } from "react-native-progress-button";
 
@@ -21,23 +21,32 @@ const GoalProgress = (props) => {
   const [progress, setProgress] = useState(props.progress);
 
   return (
-    <ProgressButton
-      style={{
-        width: 125,
-        height: 20,
-        borderWidth: 0,
-        borderRadius: 20,
-        padding: 0,
-      }}
-      text={progress + "/" + props.maxProgress}
-      textStyle={styles.textStyle}
-      buttonState="progress"
-      smoothly={true}
-      progress={props.progress}
-      maxProgress={props.maxProgress}
-      progressColor="#fde3e7"
+    <Progress.Bar
+      progress={progress / props.maxProgress}
+      animated={true}
+      color="#fde3e7"
       unfilledColor="#fff1cb"
-    ></ProgressButton>
+      width={125}
+      height={20}
+      borderRadius={15}
+    ></Progress.Bar>
+    // <ProgressButton
+    //   style={{
+    //     width: 125,
+    //     height: 20,
+    //     borderWidth: 0,
+    //     borderRadius: 20,
+    //     padding: 0,
+    //   }}
+    //   text={progress + "/" + props.maxProgress}
+    //   textStyle={styles.textStyle}
+    //   buttonState="progress"
+    //   smoothly={true}
+    //   progress={props.progress}
+    //   maxProgress={props.maxProgress}
+    //   progressColor="#fde3e7"
+    //   unfilledColor="#fff1cb"
+    // ></ProgressButton>
   );
 };
 
