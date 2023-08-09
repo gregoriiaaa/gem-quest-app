@@ -10,7 +10,7 @@ const WelcomeScreen = ({ navigation }) => {
     navigation.navigate("Create Account");
   };
 
-  const handleLogInPress = () => {
+  const handleLayoutScreenPress = () => {
     navigation.navigate("LogIn");
   };
 
@@ -41,7 +41,7 @@ const WelcomeScreen = ({ navigation }) => {
         <Button
           style={styles.button}
           mode="outlined"
-          onPress={handleLogInPress}
+          onPress={handleLayoutScreenPress}
         >
           <Text>Log In</Text>
         </Button>
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: "350px",
-    height: "350px",
+    width: 350,
+    height: 350,
   },
   buttonContainer: {
     width: "100%",
@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    width: "150px",
-    marginTop: "1em",
+    width: 150,
+    marginTop: 15,
   },
   forgotPassword: {
-    marginTop: ".4em",
+    marginTop: 10,
     fontStyle: "italic",
     fontSize: "x-small",
   },
