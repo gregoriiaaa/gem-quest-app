@@ -7,6 +7,7 @@ import NewUser from "./screens/NewUser";
 
 /** Gem Imports */
 import GemScreen from "./screens/gems/GemScreen";
+import GemAcquisition from "./screens/gems/GemAquisition";
 
 {
   /* Source: https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
@@ -25,9 +26,10 @@ export default function App() {
     //   </NavigationContainer>
     // </PaperProvider>
 
-    <GemScreen
-      progress={700 / 1000}
-      icon="../assets/gems/Amethyst.png"
-    ></GemScreen>
+    // <GemScreen
+    //   progress={700 / 1000}
+    //   icon="../assets/gems/Amethyst.png"
+    // ></GemScreen>
+    <GemAcquisition color="#ec8bee" gem="AMETHYST"></GemAcquisition>
   );
 }
