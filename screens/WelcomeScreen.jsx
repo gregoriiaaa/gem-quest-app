@@ -1,17 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-paper";
-{
-  /* Source:
+
+/* Source:
   Height and width: https://reactnative.dev/docs/height-and-width */
-}
+
 const WelcomeScreen = ({ navigation }) => {
   const handleNewUserPress = () => {
     navigation.navigate("Create Account");
   };
 
-  const handleLayoutScreenPress = () => {
+  const handleLoginScreenPress = () => {
     navigation.navigate("LogIn");
+  };
+
+  // ADDED THE FOLLOWING FUNCTION FOR TESTING MY HOME PAGE WITHOUT LOGGIN IN
+  const handleHomeScreenPress = () => {
+    console.log("HELLO WORLD");
+    navigation.navigate("LayoutScreen");
   };
 
   return (
@@ -41,13 +47,21 @@ const WelcomeScreen = ({ navigation }) => {
         <Button
           style={styles.button}
           mode="outlined"
-          onPress={handleLayoutScreenPress}
+          onPress={handleLoginScreenPress}
         >
           <Text>Log In</Text>
         </Button>
         <Text style={styles.forgotPassword} textColor="#21005D">
           Forgot password?
         </Text>
+        {/* ADDED THE FOLLOWING BUTTON FOR TESTING MY HOME PAGE WITHOUT LOGGIN IN */}
+        <Button
+          style={styles.button}
+          mode="outlined"
+          onPress={handleHomeScreenPress}
+        >
+          <Text>Go to Home Screen</Text>
+        </Button>
       </View>
     </View>
   );

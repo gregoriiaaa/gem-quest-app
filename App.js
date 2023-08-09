@@ -6,12 +6,13 @@ import { PaperProvider } from "react-native-paper";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import NewUser from "./screens/NewUser";
 import LayoutScreen from "./navigation/LayoutScreen.jsx";
-import Home from "./screens/Home";
+
 import Explore from "./screens/Explore";
 import CreateQuest from "./screens/CreateQuest";
 import Gems from "./screens/Gems";
 import Profile from "./screens/Profile";
 import LogIn from "./screens/LogIn";
+import Home from "./screens/Home";
 
 {
   /* Source: 
