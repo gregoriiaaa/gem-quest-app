@@ -13,6 +13,10 @@ import Gems from "./screens/Gems";
 import Profile from "./screens/Profile";
 import LogIn from "./screens/LogIn";
 
+/** Gem Imports */
+import GemScreen from "./screens/gems/GemScreen";
+import GemAcquisition from "./screens/gems/GemAquisition";
+
 {
   /* Source: 
   https://reactnavigation.org/docs/nesting-navigators/#navigating-to-a-screen-in-a-nested-navigator */
