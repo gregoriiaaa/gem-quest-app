@@ -11,6 +11,7 @@ import Explore from "./screens/Explore";
 import CreateQuest from "./screens/CreateQuest";
 import Gems from "./screens/Gems";
 import Profile from "./screens/Profile";
+import LogIn from "./screens/LogIn";
 
 {
   /* Source: 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Welcome Screen" component={WelcomeScreen} />
           <Stack.Screen name="Create Account" component={NewUser} />
+          <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="LayoutScreen" component={LayoutScreen} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Explore" component={MyBottomNavigation} />

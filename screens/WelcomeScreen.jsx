@@ -11,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
   };
 
   const handleLayoutScreenPress = () => {
-    navigation.navigate("LayoutScreen");
+    navigation.navigate("LogIn");
   };
 
   return (
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: "350px",
-    height: "350px",
+    width: 350,
+    height: 350,
   },
   buttonContainer: {
     width: "100%",
@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    width: "150px",
-    marginTop: "1em",
+    width: 150,
+    marginTop: 15,
   },
   forgotPassword: {
-    marginTop: "0.4",
+    marginTop: 10,
     fontStyle: "italic",
     fontSize: "x-small",
   },
