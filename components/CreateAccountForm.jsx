@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: ".5em",
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },
