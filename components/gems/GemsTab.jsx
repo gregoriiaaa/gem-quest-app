@@ -1,14 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  Image,
-  StatusBar,
-} from "react-native";
+
+import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 /**
  *  Mapping of gem pngs.
@@ -25,61 +18,106 @@ const GemsIcons = {
   Diamond: require("../../assets/gems/Diamond.png"),
 };
 
-/** In user's database of what they own. So we only render whats there. */
-const GEMS = [
-  { name: "amber", key: "amber" },
-  { name: "pearl", key: "pearl" },
-  { name: "ruby", key: "ruby" },
-  { name: "jade", key: "jade" },
-  { name: "sapphire", key: "sapphire" },
-  { name: "emerald", key: "emerald" },
-  { name: "amethyst", key: "amethyst" },
-  { name: "rose quartz", key: "rose quartz" },
-  { name: "diamond", key: "diamond" },
-];
-
-const Gem = (props) => {
+/**
+ * Returns a GemsTab component, which is a 3x3 grid of gems.
+ *
+ * @author Randy Nguyen
+ * (TODO: specify which gems are rendered based on backend)
+ * @param {*} props
+ * @returns {ScrollView} GemsTab
+ */
+const GemsTab = (props) => {
   return (
-    <View style={styles.gem}>
-      <Image style={styles.gemIcon} source={GemsIcons.Amber} />
-      <Text style={styles.name}>{props.name}</Text>
-    </View>
-  );
-};
+    <ScrollView>
+      <Grid>
+        <Row style={styles.row}>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Amber}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>amber</Text>
+          </Col>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Pearl}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>pearl</Text>
+          </Col>
 
-const GemsTab = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        numColumns={3}
-        columnWrapperStyle={styles.row}
-        data={GEMS}
-        extraData={this.Amber}
-        renderItem={({ item, index, separators }) => <Gem name={item.name} />}
-      />
-    </SafeAreaView>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Ruby}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>ruby</Text>
+          </Col>
+        </Row>
+
+        <Row style={styles.row}>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Jade}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>jade</Text>
+          </Col>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Sapphire}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>sapphire</Text>
+          </Col>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Emerald}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>emerald</Text>
+          </Col>
+        </Row>
+
+        <Row style={styles.row}>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>amethyst</Text>
+          </Col>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.RoseQuartz}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>rose quartz</Text>
+          </Col>
+          <Col style={styles.col}>
+            <Image style={styles.gemIcon} source={GemsIcons.Diamond}></Image>
+            <View style={styles.gemLine}></View>
+            <Text style={styles.gemType}>diamond</Text>
+          </Col>
+        </Row>
+      </Grid>
+    </ScrollView>
   );
 };
 
 export default GemsTab;
 
+/**
+ *  Styles are slightly forced with hard-coded numerical values.
+ *  May not be accurately represented on different models/devices.
+ *  Based off Figma iPhone 14 dimensions.
+ */
 const styles = StyleSheet.create({
-  container: {
+  row: { /** necessary for ScrollView to work */
+    height: 150,
+  },
+  col: {
     flex: 1,
     justifyContent: "center",
-  },
-  gem: {
-    flex: 1,
-    padding: 30,
-    columnGap: 100,
+    alignItems: "center",
   },
   gemIcon: {
-    width: "auto",
-    height: "auto",
+    resizeMode: "contain",
+    height: 50,
+    width: 50,
   },
-  name: {
-    textAlign: "center",
-    fontSize: 16,
+  gemLine: {
+    width: 50,
+    height: 1.5,
+    backgroundColor: "black",
+    marginTop: 10,
   },
-  row: {},
+  gemType: {
+    marginTop: 5,
+    fontStyle: "italic",
+  },
 });

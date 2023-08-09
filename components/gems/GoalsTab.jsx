@@ -44,6 +44,11 @@ const GoalsTab = (props) => {
 
 export default GoalsTab;
 
+/**
+ *  Styles are slightly forced with hard-coded numerical values.
+ *  May not be accurately represented on different models/devices.
+ *  Based off Figma iPhone 14 dimensions.
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
