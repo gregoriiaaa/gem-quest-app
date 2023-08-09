@@ -1,15 +1,7 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import CreateUserProfileForm from "../components/CreateUserProfileForm";
+import { View, Text, StyleSheet } from "react-native";
 
 const Profile = () => {
-  const [text, setText] = useState("");
   return (
     <View style={styles.container}>
       <Text>Welcome to the Profile page!</Text>
