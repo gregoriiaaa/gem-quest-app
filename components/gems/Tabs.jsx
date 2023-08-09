@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { View, StyleSheet } from "react-native";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import GoalsTab from "./GoalsTab";

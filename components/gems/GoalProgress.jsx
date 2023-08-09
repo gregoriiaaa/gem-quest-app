@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import { Text, Button, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
-import { ProgressButton } from "react-native-progress-button";
 
 /**
  * Returns a Progress Bar component to be used inside a Goal component.

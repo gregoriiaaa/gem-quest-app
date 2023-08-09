@@ -9,7 +9,6 @@ import Home from "../screens/Home";
 import Explore from "../screens/Explore";
 import CreateQuest from "../screens/CreateQuest";
 import Gems from "../screens/Gems";
-import GemScreen from "../screens/gems/GemScreen";
 import Profile from "../screens/Profile";
 
 {
