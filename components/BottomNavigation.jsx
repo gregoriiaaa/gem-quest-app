@@ -9,7 +9,7 @@ import Home from "../screens/Home";
 import Explore from "../screens/Explore";
 import CreateQuest from "../screens/CreateQuest";
 import Gems from "../screens/Gems";
-import Profile from "../screens/Profile";
+import UserProfile from "../screens/UserProfile";
 
 {
   /* Sources: 
@@ -110,7 +110,7 @@ const MyBottomNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={UserProfile}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => {

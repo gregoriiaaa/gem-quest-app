@@ -8,12 +8,20 @@ import {
 } from "react-native";
 import { Text } from "react-native-paper";
 import BuildProfileForm from "../components/editProfileForm";
-//  <CreateAccountForm />
-const BuildProfile = () => {
+
+const BuildProfile = ({ navigation }) => {
+  const handleSaveProfile = (profileData) => {
+    // Navigate to the Profile screen and pass the profileData
+    navigation.navigate("Profile", { profileData });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <BuildProfileForm />
+        <BuildProfileForm
+          navigation={navigation}
+          onSaveProfile={handleSaveProfile}
+        />
       </ScrollView>
     </SafeAreaView>
   );

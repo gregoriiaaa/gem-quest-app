@@ -2,9 +2,18 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import BottomNavigation from "../components/BottomNavigation";
 import Header from "../components/Header";
+import { CommonActions } from "@react-navigation/native";
 
-const LayoutScreen = ({ navigation }) => {
-  console.log(navigation);
+const LayoutScreen = ({ navigation, route }) => {
+  React.useEffect(() => {
+    if (route.params?.screen) {
+      navigation.dispatch(
+        CommonActions.navigate({
+          name: route.params.screen,
+        })
+      );
+    }
+  }, [route.params?.screen, navigation]);
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />

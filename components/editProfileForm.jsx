@@ -84,14 +84,17 @@ const editProfileForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
-    alert(JSON.stringify(values, null, 2));
+    // await sleep(500);
+    // alert(JSON.stringify(values, null, 2));
+    navigation.navigate("Profile", { profileData: values });
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={(values) => {
+        handleSubmit(values);
+      }}
       validationSchema={validationSchema}
       enableReinitialize
     >
@@ -226,7 +229,7 @@ const editProfileForm = ({ navigation }) => {
             <Button
               onPress={() => {
                 formikProps.handleSubmit();
-                navigation.navigate("Home");
+                // navigation.navigate("LayoutScreen");
               }}
               mode="contained"
               style={styles.button}
