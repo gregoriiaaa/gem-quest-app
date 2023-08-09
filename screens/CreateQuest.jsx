@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import QuestForm from "..\components\QuestForm.jsx";
 
 const CreateQuest = () => {
   return (
     <View style={styles.container}>
       <Text>Welcome to the Create a Quest page!</Text>
-      {/* Add other content for the Create a Quest page here */}
+      <View style={styles.newUserForm}>
+        <QuestForm navigation={navigation} />
+      </View>
     </View>
   );
 };
