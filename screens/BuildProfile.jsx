@@ -9,11 +9,11 @@ import {
 import { Text } from "react-native-paper";
 import BuildProfileForm from "../components/editProfileForm";
 //  <CreateAccountForm />
-const Profile = () => {
+const BuildProfile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        {/* <BuildProfileForm /> */}
+        <BuildProfileForm />
       </ScrollView>
     </SafeAreaView>
   );
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default BuildProfile;

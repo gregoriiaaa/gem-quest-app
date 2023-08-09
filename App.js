@@ -5,6 +5,7 @@ import { PaperProvider } from "react-native-paper";
 
 import WelcomeScreen from "./screens/WelcomeScreen";
 import NewUser from "./screens/NewUser";
+import BuildProfile from "./screens/BuildProfile";
 import LayoutScreen from "./navigation/LayoutScreen.jsx";
 import Home from "./screens/Home";
 import Explore from "./screens/Explore";
@@ -28,6 +29,7 @@ export default function App() {
           <Stack.Screen name="Welcome Screen" component={WelcomeScreen} />
           <Stack.Screen name="Create Account" component={NewUser} />
           <Stack.Screen name="LogIn" component={LogIn} />
+          <Stack.Screen name="BuildProfile" component={BuildProfile} />
           <Stack.Screen name="LayoutScreen" component={LayoutScreen} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Explore" component={MyBottomNavigation} />

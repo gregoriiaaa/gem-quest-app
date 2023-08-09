@@ -153,7 +153,10 @@ const CreateAccountForm = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={formikProps.handleSubmit}
+              onPress={() => {
+                // formikProps.handleSubmit();
+                navigation.navigate("BuildProfile");
+              }}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
