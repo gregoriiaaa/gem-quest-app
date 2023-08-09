@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { TextInput, Text, Button, Picker } from "react-native-paper";
+import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
 //import CalendarPicker from 'react-native-calendar-picker';
@@ -64,15 +64,11 @@ const QuestForm = ({ navigation }) => {
     title: Yup.string()
       .min(2, "Must be at least 2 characters")
       .max(40, "Must be less than 40 characters")
-      .required("Event title is required")
-      .matches(
-        /^([a-zA-Z]+)?$/,
-        "Please enter a valid title using only letters"
-      ),
+      .required("Event title is required"),
     date: Yup.string()
       .required("Event date is required")
       .matches(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{4}$/,
+        /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/,
         "Must be in the format: MM/DD/YYYY"
       ),
     time: Yup.string()
@@ -137,21 +133,26 @@ const QuestForm = ({ navigation }) => {
           />
 
           <TextInputLiveFeedback
-            label="Password"
+            label="Restaurant"
             formikProps={formikProps}
-            formikKey="password"
-            secureTextEntry={true}
+            formikKey="restaurant"
           />
 
           <TextInputLiveFeedback
-            label="Confirm Password"
+            label="Outdoor Space"
             formikProps={formikProps}
-            formikKey="confirmpassword"
-            secureTextEntry={true}
+            formikKey="outdoorspace"
           />
+
+          <TextInputLiveFeedback
+            label="Plan of Action"
+            formikProps={formikProps}
+            formikKey="planofaction"
+          />
+
           <View style={styles.buttonContainer}>
             <Button
-              onPress={() => navigation.navigate("Welcome Screen")}
+              onPress={() => navigation.navigate("LayoutScreen")}
               mode="outlined"
               style={styles.button}
               icon="arrow-left"
