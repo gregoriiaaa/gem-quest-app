@@ -5,8 +5,8 @@ import * as Progress from "react-native-progress";
 /**
  * Returns a Progress Bar component to be used inside a Goal component.
  * @author Randy Nguyen
- * @param {progress} props 
- * (TODO: Convert float to fraction string) 
+ * @param {progress} props
+ * (TODO: Convert float to fraction string)
  * @param {float} progress Progress on a goal.
  * @returns {Progress.Bar} GoalProgress
  */

@@ -28,64 +28,64 @@ const GemsIcons = {
  */
 const GemsTab = (props) => {
   return (
-    <ScrollView>
-      <Grid>
-        <Row style={styles.row}>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Amber}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>amber</Text>
-          </Col>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Pearl}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>pearl</Text>
-          </Col>
+    /** ScrollView is buggy on web, but good on QR and iOS */
+    // <ScrollView style={styles.container}></ScrollView>
+    <Grid style={styles.gemLayout}>
+      <Row style={styles.row}>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Amber}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>amber</Text>
+        </Col>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Pearl}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>pearl</Text>
+        </Col>
 
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Ruby}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>ruby</Text>
-          </Col>
-        </Row>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Ruby}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>ruby</Text>
+        </Col>
+      </Row>
 
-        <Row style={styles.row}>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Jade}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>jade</Text>
-          </Col>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Sapphire}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>sapphire</Text>
-          </Col>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Emerald}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>emerald</Text>
-          </Col>
-        </Row>
+      <Row style={styles.row}>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Jade}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>jade</Text>
+        </Col>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Sapphire}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>sapphire</Text>
+        </Col>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Emerald}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>emerald</Text>
+        </Col>
+      </Row>
 
-        <Row style={styles.row}>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>amethyst</Text>
-          </Col>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.RoseQuartz}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>rose quartz</Text>
-          </Col>
-          <Col style={styles.col}>
-            <Image style={styles.gemIcon} source={GemsIcons.Diamond}></Image>
-            <View style={styles.gemLine}></View>
-            <Text style={styles.gemType}>diamond</Text>
-          </Col>
-        </Row>
-      </Grid>
-    </ScrollView>
+      <Row style={styles.row}>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>amethyst</Text>
+        </Col>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.RoseQuartz}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>rose quartz</Text>
+        </Col>
+        <Col style={styles.col}>
+          <Image style={styles.gemIcon} source={GemsIcons.Diamond}></Image>
+          <View style={styles.gemLine}></View>
+          <Text style={styles.gemType}>diamond</Text>
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 
@@ -97,7 +97,15 @@ export default GemsTab;
  *  Based off Figma iPhone 14 dimensions.
  */
 const styles = StyleSheet.create({
-  row: { /** necessary for ScrollView to work */
+  container: {
+    flex: 1,
+  },
+  gemLayout: {
+    flex: 1,
+  },
+  row: {
+    /** necessary for ScrollView to work */
+    flex: 1,
     height: 150,
   },
   col: {

@@ -25,8 +25,8 @@ const Goal = (props) => {
       {/* Progress bar */}
       <Card.Content>
         <View style={styles.progressBar}>
-          <Text style={styles.progress}>{props.progress}</Text>
           <GoalProgress progress={props.progress}></GoalProgress>
+          <Text style={styles.progress}>{props.progress}</Text>
         </View>
       </Card.Content>
     </Card>
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   goal: {
     flex: 1,
     width: 300,
+    height: 110,
     backgroundColor: "#bd92cd",
     borderColor: "#c6c8c6",
     borderWidth: 2,
@@ -52,10 +53,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   progressBar: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 10,
+    bottom: 25,
     paddingLeft: 40,
   },
   progress: {

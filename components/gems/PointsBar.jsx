@@ -5,21 +5,21 @@ import { Text, View, StyleSheet } from "react-native";
 import { Avatar } from "react-native-paper";
 import * as Progress from "react-native-progress";
 
-/** 
- * Returns a View component that renders the main points bar, including 
+/**
+ * Returns a View component that renders the main points bar, including
  * the points total and remaining quantity until the next gem is acquired.
- * 
+ *
  * @author Randy Nguyen
  * @param {progress, icon} props
- * (TODO: Convert float to fraction string) 
+ * (TODO: Convert float to fraction string)
  * @param {float} progress Total progress.
- * (TODO: May have to change gem avatar to a custom circle. 
+ * (TODO: May have to change gem avatar to a custom circle.
  * This is because the gem pngs are getting cropped off in the avatar circle)
  * @param {string} icon Gem icon.
  * @returns {View} PointsBar
  */
 const PointsBar = (props) => {
-  /** 
+  /**
    * TODO: May need to change using hooks:
    *  State of the progress bar
    *  State of the gem icon displayed
@@ -62,7 +62,7 @@ const PointsBar = (props) => {
   );
 };
 
-/** 
+/**
  *  Styles are slightly forced with hard-coded numerical values.
  *  May not be accurately represented on different models/devices.
  *  Based off Figma iPhone 14 dimensions.
