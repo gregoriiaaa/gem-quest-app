@@ -1,14 +1,14 @@
 import * as React from "react";
 
-import { ScrollView, View, StyleSheet } from "react-native";
+import { Text, ScrollView, View, StyleSheet } from "react-native";
 
 import Goal from "./Goal";
 
 /**
- * 
+ *
  * (TODO: Should have props.firstGoal info, props.secondGoal info...)
- * @param {*} props 
- * @returns 
+ * @param {*} props
+ * @returns
  */
 const GoalsTab = (props) => {
   return (
@@ -18,23 +18,37 @@ const GoalsTab = (props) => {
       <View style={styles.goalsContainer}>
         <View style={styles.goal}>
           <Goal
-            description="post 5 quests (5 pts)"
-            progress={3 / 5}
-            icon="../assets/gemQuest.png"
+            description={
+              <Text style={styles.description}>
+                post 5 quests<Text style={styles.pointsValue}> (5 pts)</Text>
+              </Text>
+            }
+            progress={3}
+            maxProgress={5}
           ></Goal>
         </View>
         <View style={styles.goal}>
           <Goal
-            description="login for a week (10 pts)"
-            progress={4 / 10}
-            icon="../assets/gemQuest.png"
+            description={
+              <Text style={styles.description}>
+                login for a week
+                <Text style={styles.pointsValue}> (10 pts)</Text>
+              </Text>
+            }
+            progress={4}
+            maxProgress={7}
           ></Goal>
         </View>
         <View style={styles.goal}>
           <Goal
-            description="finish your profile (5 pts)"
-            progress={0 / 1}
-            icon="../assets/gemQuest.png"
+            description={
+              <Text style={styles.description}>
+                finish your profile
+                <Text style={styles.pointsValue}> (5 pts)</Text>
+              </Text>
+            }
+            progress={0}
+            maxProgress={1}
           ></Goal>
         </View>
       </View>
@@ -59,5 +73,11 @@ const styles = StyleSheet.create({
   goal: {
     flex: 1,
     padding: 35,
+  },
+  description: {
+    fontSize: 16,
+  },
+  pointsValue: {
+    fontStyle: "italic",
   },
 });

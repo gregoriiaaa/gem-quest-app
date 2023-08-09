@@ -26,10 +26,7 @@ export default function App() {
     //   </NavigationContainer>
     // </PaperProvider>
 
-    <GemScreen
-      progress={700 / 1000}
-      icon="../assets/gems/Amethyst.png"
-    ></GemScreen>
+    <GemScreen progress={990} maxProgress={1250}></GemScreen>
     // <GemAcquisition color="#ec8bee" gem="AMETHYST"></GemAcquisition>
   );
 }

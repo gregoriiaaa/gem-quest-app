@@ -10,9 +10,9 @@ import * as Progress from "react-native-progress";
  * the points total and remaining quantity until the next gem is acquired.
  *
  * @author Randy Nguyen
- * @param {progress, icon} props
- * (TODO: Convert float to fraction string)
- * @param {float} progress Total progress.
+ * @param {progress, maxProgress, icon} props
+ * @param {int} progress Total progress.
+ * @param {int} maxProgress Denominator.
  * (TODO: May have to change gem avatar to a custom circle.
  * This is because the gem pngs are getting cropped off in the avatar circle)
  * @param {string} icon Gem icon.
@@ -24,7 +24,7 @@ const PointsBar = (props) => {
    *  State of the progress bar
    *  State of the gem icon displayed
    *  Number of points remaining until next gem
-   *  The next gem's icon and color styling
+   *  The next gem's icon, text, and color styling
    */
   const [progress, setProgress] = useState(props.progress);
   const [icon, setIcon] = useState(props.icon);
@@ -34,9 +34,11 @@ const PointsBar = (props) => {
       <View style={styles.container}>
         {/* Points total and bar */}
         <View style={styles.progressBar}>
-          <Text style={styles.progress}>{props.progress}</Text>
+          <Text style={styles.progress}>
+            {progress + "/" + props.maxProgress}
+          </Text>
           <Progress.Bar
-            progress={props.progress}
+            progress={progress / props.maxProgress}
             color="#fde3e7"
             unfilledColor="#fff1cb"
             width={300}
@@ -54,9 +56,9 @@ const PointsBar = (props) => {
       </View>
       {/* Remaining points. Separated for flexing underneath. */}
       <Text style={styles.remainingPts}>
-        10 pts
+        {props.maxProgress - progress + " pts"}
         <Text style={{ fontWeight: "normal" }}> until </Text>
-        <Text style={styles.nextGem}>EMERALD!</Text>
+        <Text style={styles.nextGem}>AMETHYST!</Text>
       </Text>
     </View>
   );
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
   },
   nextGem: {
     fontWeight: "bold",
-    color: "#33a398",
+    color: "#ec8bee",
   },
   icon: {
     justifyContent: "center",

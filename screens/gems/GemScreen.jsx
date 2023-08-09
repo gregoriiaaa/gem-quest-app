@@ -21,15 +21,16 @@ const Gems = {
 };
 
 /**
- * Returns a GemScreen; a component that displays: 
+ * Returns a GemScreen; a component that displays:
  * 1) the main points bar
  * 2) the navigation tabs between "goals" and "gems"
  *
  * Should be directed to in the main bottom navigation bar when tapping "Gem".
  *
  * @author Randy Nguyen
- * @param {progress} props
- * @param {float} progress PointsBar progress.
+ * @param {progress, maxProgress} props
+ * @param {int} progress PointsBar progress.
+ * @param {int} maxProgress PointsBar denominator.
  * @returns {SafeAreaView} GemScreen
  */
 const GemScreen = (props) => {
@@ -40,11 +41,15 @@ const GemScreen = (props) => {
   return (
     /** Formats view for mobile notches. */
     <SafeAreaView style={styles.container}>
-      { /* Main Points Bar */ }
+      {/* Main Points Bar */}
       <View style={styles.pointsBar}>
-        <PointsBar progress={props.progress} icon={Gems.Amethyst}></PointsBar>
+        <PointsBar
+          progress={props.progress}
+          maxProgress={props.maxProgress}
+          icon={Gems.Amethyst}
+        ></PointsBar>
       </View>
-      { /* Goals & Gems Navigation Tabs */ }
+      {/* Goals & Gems Navigation Tabs */}
       <View style={styles.tabs}>
         <Tabs></Tabs>
       </View>

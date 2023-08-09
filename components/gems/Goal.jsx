@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { View, StyleSheet } from "react-native";
-import { Avatar, Card, Text } from "react-native-paper";
+import { Avatar, Card } from "react-native-paper";
 
 import GoalProgress from "./GoalProgress";
 
@@ -10,7 +10,8 @@ import GoalProgress from "./GoalProgress";
  * @author Randy Nguyen
  * @param {description, progress} props
  * @param {string} description Goal description
- * @param {float} progress (TODO: Convert to fraction string) Total progress.
+ * @param {int} progress Progress so far.
+ * @param {int} maxProgress Progress denominator.
  * @returns {Card} Goal
  */
 const Goal = (props) => {
@@ -20,13 +21,20 @@ const Goal = (props) => {
       <Card.Title
         title={props.description}
         titleStyle={styles.description}
-        left={(props) => <Avatar.Icon {...props} icon={props.icon} />}
+        left={(props) => (
+          <Avatar.Image
+            size={45}
+            source={require("../../assets/gemQuest.png")}
+          />
+        )}
       />
       {/* Progress bar */}
       <Card.Content>
         <View style={styles.progressBar}>
-          <GoalProgress progress={props.progress}></GoalProgress>
-          <Text style={styles.progress}>{props.progress}</Text>
+          <GoalProgress
+            progress={props.progress}
+            maxProgress={props.maxProgress}
+          ></GoalProgress>
         </View>
       </Card.Content>
     </Card>
@@ -55,14 +63,8 @@ const styles = StyleSheet.create({
   progressBar: {
     justifyContent: "center",
     alignItems: "center",
-    bottom: 25,
     paddingLeft: 40,
-  },
-  progress: {
-    textAlign: "center",
-    color: "#6770e0",
-    fontWeight: "bold",
-    top: 10,
+    bottom: 10,
   },
 });
 
