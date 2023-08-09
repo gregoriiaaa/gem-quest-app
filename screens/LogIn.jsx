@@ -18,6 +18,7 @@ const LogIn = ({ navigation }) => {
           source={require("../assets/gemQuest.png")}
           resizeMode="contain"
           style={styles.image}
+          alt={"GemQuest logo in pride colors"}
         />
       </TouchableOpacity>
       <Text style={styles.titleText}>Sign In</Text>
