@@ -6,6 +6,7 @@ import UserProfile from "../screens/UserProfile";
 const Profile = ({ route, navigation }) => {
   const { profileData } = route.params;
 
+
   return (
     <View style={styles.container}>
       <UserProfile profileData={profileData} />
@@ -33,6 +34,7 @@ const Profile = ({ route, navigation }) => {
           Continue to App
         </Button>
       </View>
+
     </View>
   );
 };

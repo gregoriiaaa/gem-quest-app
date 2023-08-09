@@ -14,6 +14,7 @@ const LayoutScreen = ({ navigation, route }) => {
       );
     }
   }, [route.params?.screen, navigation]);
+
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />

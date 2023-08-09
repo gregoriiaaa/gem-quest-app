@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { TextInput, Text, Button } from "react-native-paper";
+import { TextInput, Text, Button, Picker } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import authService from "../authService.jsx";
+//import CalendarPicker from 'react-native-calendar-picker';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -48,59 +48,64 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const CreateAccountForm = ({ navigation }) => {
+const QuestForm = ({ navigation }) => {
   const initialValues = {
-    name: "",
-    email: "",
-    birthday: "",
-    pronouns: "",
-    password: "",
-    confirmpassword: "",
+    title: "",
+    date: "",
+    time: "",
+    agegroup: "",
+    rsvplimit: "",
+    restaurant: "",
+    outdoorspace: "",
+    planofaction: "",
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string()
+    title: Yup.string()
       .min(2, "Must be at least 2 characters")
       .max(40, "Must be less than 40 characters")
-      .required("Name is required")
+      .required("Event title is required")
       .matches(
-        /^[a-zA-Z]+(\s[a-zA-Z]+)?$/,
-        "Please enter a valid first and last name separated by a single space"
+        /^([a-zA-Z]+)?$/,
+        "Please enter a valid title using only letters"
       ),
-    email: Yup.string()
-      .email("Invalid email")
-      .required("Berkeley email is required")
-      .matches(/^.*@berkeley\.edu$/, 'Email must end with "@berkeley.edu"'),
-    birthday: Yup.string()
-      .required("Bithday is required")
+    date: Yup.string()
+      .required("Event date is required")
       .matches(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/,
+        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{4}$/,
         "Must be in the format: MM/DD/YYYY"
       ),
-    pronouns: Yup.string().required("Pronouns are required"),
-    password: Yup.string()
-      .required("Password is required")
-      .min(8, "Password must be at least 8 characters")
+    time: Yup.string()
+      .required("Time is required")
       .matches(
-        /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
-        "Password must contain at least a Capital Letter, a Number, and a Special Character."
+        /^(1[012]|0?[1-9]):[0-5][0-9](am|pm)$/,
+        "Must be in the format: HH:MMam or HH:MMpm"
       ),
-    confirmpassword: Yup.string()
-      .required("Password match is required")
-      .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    agegroup: Yup.string().required("Age group is required"),
+    rsvplimit: Yup.string().required("RSVP limit is required"),
+    planofaction: Yup.string().required("Plan of action is required"),
   });
 
   const handleSubmit = async (values) => {
+    await sleep(500);
     console.log(values);
-    //alert(JSON.stringify(values, null, 2));
-    await authService.SignUp(
-      values.name,
-      values.email,
-      values.password,
-      values.birthday,
-      values.pronouns
-    );
+    alert(JSON.stringify(values, null, 2));
   };
+
+  const ageList = [
+    {
+      label: "18-20",
+      value: "18-20",
+    },
+    {
+      label: "21-25",
+      value: "21-25",
+    },
+    {
+      label: "25+",
+      value: "25+",
+    },
+  ]
 
   return (
     <Formik
@@ -111,31 +116,24 @@ const CreateAccountForm = ({ navigation }) => {
       {(formikProps) => (
         <View>
           <TextInputLiveFeedback
-            label="Name"
+            label="Title"
             formikProps={formikProps}
-            formikKey="name"
-            placeholder="Enter your first and last name..."
+            formikKey="title"
+            placeholder="Enter your event title..."
           />
 
           <TextInputLiveFeedback
-            label="Email"
+            label="Date"
             formikProps={formikProps}
-            formikKey="email"
-            placeholder="Enter @berkeley.edu email..."
-          />
-
-          <TextInputLiveFeedback
-            label="Birthday"
-            formikProps={formikProps}
-            formikKey="birthday"
+            formikKey="date"
             placeholder="MM/DD/YYYY"
           />
 
           <TextInputLiveFeedback
-            label="Pronouns"
+            label="Time"
             formikProps={formikProps}
-            formikKey="pronouns"
-            placeholder="Enter your pronouns..."
+            formikKey="time"
+            placeholder="00:00am"
           />
 
           <TextInputLiveFeedback
@@ -161,10 +159,7 @@ const CreateAccountForm = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={() => {
-                // formikProps.handleSubmit();
-                navigation.navigate("BuildProfile");
-              }}
+              onPress={formikProps.handleSubmit}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -187,7 +182,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: .5,
+    marginTop: ".5em",
     fontWeight: "700",
     color: "#56595D",
   },
@@ -211,4 +206,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateAccountForm;
+export default QuestForm;

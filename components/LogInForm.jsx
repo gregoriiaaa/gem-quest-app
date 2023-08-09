@@ -4,6 +4,8 @@ import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
+import authService from "../authService.jsx";
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const TextInputLiveFeedback = ({
@@ -48,6 +50,7 @@ const TextInputLiveFeedback = ({
 };
 
 const LogInForm = ({ navigation }) => {
+
   const initialValues = {
     email: "",
     password: "",
@@ -61,9 +64,11 @@ const LogInForm = ({ navigation }) => {
     password: Yup.string().required("Password is required"),
   });
 
+
   const handleSubmit = async (values) => {
-    await sleep(500);
-    alert(JSON.stringify(values, null, 2));
+    // await sleep(500);
+    //alert(JSON.stringify(values, null, 2));
+    await authService.LogIn(values.email, values.password);
   };
 
   return (
@@ -104,6 +109,7 @@ const LogInForm = ({ navigation }) => {
                 // formikProps.handleSubmit();
                 navigation.navigate("LayoutScreen");
               }}
+
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -131,6 +137,7 @@ const styles = StyleSheet.create({
     color: "#56595D",
   },
   signUpText: {
+
     marginTop: 10,
     fontStyle: "italic",
     fontSize: "x-small",
@@ -139,6 +146,7 @@ const styles = StyleSheet.create({
     color: "#21005D",
     textDecorationLine: "underline", // Add underline to indicate a link
   },
+
   button: {
     marginVertical: 2,
     borderRadius: 5,
@@ -160,3 +168,4 @@ const styles = StyleSheet.create({
 });
 
 export default LogInForm;
+

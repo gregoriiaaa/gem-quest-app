@@ -1,3 +1,6 @@
+/** import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native"; */
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MyBottomNavigation from "./components/BottomNavigation";
@@ -7,6 +10,7 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import NewUser from "./screens/NewUser";
 import UserProfile from "./screens/UserProfile";
 import BuildProfile from "./screens/BuildProfile";
+
 import LayoutScreen from "./navigation/LayoutScreen.jsx";
 import Home from "./screens/Home";
 import Explore from "./screens/Explore";
@@ -32,6 +36,7 @@ export default function App() {
           <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="BuildProfile" component={BuildProfile} />
           <Stack.Screen name="UserProfile" component={UserProfile} />
+
           <Stack.Screen name="LayoutScreen" component={LayoutScreen} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Explore" component={MyBottomNavigation} />
