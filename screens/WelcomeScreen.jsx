@@ -11,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
   };
 
   const handleLayoutScreenPress = () => {
-    navigation.navigate("LayoutScreen");
+    navigation.navigate("LogIn");
   };
 
   return (
