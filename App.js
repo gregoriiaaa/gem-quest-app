@@ -15,7 +15,7 @@ import CreateQuest from "./screens/CreateQuest";
 import Gems from "./screens/Gems";
 import Profile from "./screens/Profile";
 import LogIn from "./screens/LogIn";
-import GemAcquisition from "./screens/gems/GemAquisition";
+// import GemAcquisition from "./screens/gems/GemAquisition";
 
 {
   /* Source: 
@@ -38,7 +38,7 @@ export default function App() {
           <Stack.Screen name="CreateQuest" component={CreateQuest} />
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="GemAcquisition" component={GemAcquisition} />
+          {/* <Stack.Screen name="GemAcquisition" component={GemAcquisition} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

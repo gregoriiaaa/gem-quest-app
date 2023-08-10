@@ -36,7 +36,7 @@ const Goal = (props) => {
         <Pressable
           onPress={() => {
             if (props.progress === props.maxProgress) {
-              displayGemAcquisition();
+              console.log("do gem acq logic here");
             }
           }}
         >
@@ -52,10 +52,10 @@ const Goal = (props) => {
   );
 };
 
-function displayGemAcquisition() {
-  const navigation = useNavigation();
-  navigation.navigate("GemAquisition");
-}
+// function displayGemAcquisition() {
+//   const navigation = useNavigation();
+//   navigation.navigate("GemAquisition");
+// }
 
 /**
  *  Styles are slightly forced with hard-coded numerical values.
