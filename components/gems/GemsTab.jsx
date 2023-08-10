@@ -33,18 +33,30 @@ const GemsTab = (props) => {
     <Grid style={styles.gemLayout}>
       <Row style={styles.row}>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Amber}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="amber"
+            source={GemsIcons.Amber}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>amber</Text>
         </Col>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Pearl}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="pearl"
+            source={GemsIcons.Pearl}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>pearl</Text>
         </Col>
 
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Ruby}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="ruby"
+            source={GemsIcons.Ruby}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>ruby</Text>
         </Col>
@@ -52,17 +64,29 @@ const GemsTab = (props) => {
 
       <Row style={styles.row}>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Jade}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="jade"
+            source={GemsIcons.Jade}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>jade</Text>
         </Col>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Sapphire}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="sapphire"
+            source={GemsIcons.Sapphire}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>sapphire</Text>
         </Col>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Emerald}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="emerald"
+            source={GemsIcons.Emerald}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>emerald</Text>
         </Col>
@@ -70,17 +94,29 @@ const GemsTab = (props) => {
 
       <Row style={styles.row}>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="amethyst"
+            source={GemsIcons.Amethyst}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>amethyst</Text>
         </Col>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.RoseQuartz}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="rose-quartz"
+            source={GemsIcons.RoseQuartz}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>rose quartz</Text>
         </Col>
         <Col style={styles.col}>
-          <Image style={styles.gemIcon} source={GemsIcons.Diamond}></Image>
+          <Image
+            style={styles.gemIcon}
+            alt="diamond"
+            source={GemsIcons.Diamond}
+          ></Image>
           <View style={styles.gemLine}></View>
           <Text style={styles.gemType}>diamond</Text>
         </Col>

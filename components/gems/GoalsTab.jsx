@@ -23,7 +23,7 @@ const GoalsTab = (props) => {
                 post 5 quests<Text style={styles.pointsValue}> (5 pts)</Text>
               </Text>
             }
-            progress={3}
+            progress={5}
             maxProgress={5}
           ></Goal>
         </View>

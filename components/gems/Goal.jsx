@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { Avatar, Card } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import GoalProgress from "./GoalProgress";
 
@@ -23,6 +24,8 @@ const Goal = (props) => {
         titleStyle={styles.description}
         left={(props) => (
           <Avatar.Image
+            style={{ paddingTop: 10, backgroundColor: null }}
+            alt="goal-icon"
             size={45}
             source={require("../../assets/gemQuest.png")}
           />
@@ -30,16 +33,23 @@ const Goal = (props) => {
       />
       {/* Progress bar */}
       <Card.Content>
-        <View style={styles.progressBar}>
-          <GoalProgress
-            progress={props.progress}
-            maxProgress={props.maxProgress}
-          ></GoalProgress>
-        </View>
+        
+          <View style={styles.progressBar}>
+            <GoalProgress
+              progress={props.progress}
+              maxProgress={props.maxProgress}
+            ></GoalProgress>
+          </View>
+        
       </Card.Content>
     </Card>
   );
 };
+
+// function displayGemAcquisition() {
+//   const navigation = useNavigation();
+//   navigation.navigate("GemAquisition");
+// }
 
 /**
  *  Styles are slightly forced with hard-coded numerical values.

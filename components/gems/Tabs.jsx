@@ -24,11 +24,11 @@ const Tabs = (props) => {
    */
   return (
     <View style={styles.tabs}>
-        <Tab.Navigator>
-          {/* Add more tabs here if you'd like */}
-          <Tab.Screen name="GOALS" component={GoalsTab} />
-          <Tab.Screen name="GEMS" component={GemsTab} />
-        </Tab.Navigator>
+      <Tab.Navigator>
+        {/* Add more tabs here if you'd like */}
+        <Tab.Screen name="GOALS" component={GoalsTab} />
+        <Tab.Screen name="GEMS" component={GemsTab} />
+      </Tab.Navigator>
     </View>
   );
 };

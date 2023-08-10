@@ -15,6 +15,7 @@ class User {
     movieShowBook = "",
     topMovie = "",
     topShow = "",
+    topBook = "",
     musicTaste = "",
     topArtist = ""
   ) {
@@ -33,6 +34,7 @@ class User {
     this.movieShowBook = movieShowBook;
     this.topMovie = topMovie;
     this.topShow = topShow;
+    this.topBook = topBook;
     this.musicTaste = musicTaste;
     this.topArtist = topArtist;
   }
@@ -52,12 +54,15 @@ class User {
       genderId: this.genderId ? this.genderId : "",
       personalityType: this.personalityType ? this.personalityType : "",
       petsDescription: this.petsDescription ? this.petsDescription : "",
-      dietaryRestrictions: this.dietaryRestrictions ? this.dietaryRestrictions : "",
+      dietaryRestrictions: this.dietaryRestrictions
+        ? this.dietaryRestrictions
+        : "",
       coffeeTeaBoba: this.coffeeTeaBoba ? this.coffeeTeaBoba : "",
       comfortFood: this.comfortFood ? this.comfortFood : "",
       movieShowBook: this.movieShowBook ? this.movieShowBook : "",
       topMovie: this.topMovie ? this.topMovie : "",
       topShow: this.topShow ? this.topShow : "",
+      topBook: this.topBook ? this.topBook : "",
       musicTaste: this.musicTaste ? this.musicTaste : "",
       topArtist: this.topArtist ? this.topArtist : "",
     };

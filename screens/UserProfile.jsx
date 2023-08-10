@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -9,8 +9,50 @@ import {
 } from "react-native";
 import { Text, Button, Avatar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import authService from "../authService.jsx";
+import { getUserById } from "../database/userQueries.js";
 
-const UserProfile = ({ profileData }) => {
+const UserProfile = () => {
+  const currentUID = authService.currUID();
+
+  const [userName, setUserName] = useState(null);
+  const [userPronouns, setUserPronouns] = useState(null);
+  const [genderIdentity, setGenderIdentity] = useState(null);
+  const [ethnicIdentity, setEthnicIdentity] = useState(null);
+  const [personalityType, setPersonalityType] = useState(null);
+  const [pets, setPets] = useState(null);
+  const [diet, setDiet] = useState(null);
+  const [drinks, setDrinks] = useState(null);
+  const [comfortMeal, setComfortMeal] = useState(null);
+  const [entType, setEntType] = useState(null);
+  const [movie, setMovie] = useState(null);
+  const [show, setShow] = useState(null);
+  const [book, setBook] = useState(null);
+  const [taste, setTaste] = useState(null);
+  const [artist, setArtist] = useState(null);
+
+  useEffect(() => {
+    //gets the data updates the state
+    getUserById(currentUID).then((userData) => {
+      console.log({ userData });
+      setUserName(userData.name);
+      setUserPronouns(userData.pronouns);
+      setGenderIdentity(userData.genderId);
+      setEthnicIdentity(userData.ethnicId);
+      setPersonalityType(userData.personalityType);
+      setPets(userData.petsDescription);
+      setDiet(userData.dietaryRestrictions);
+      setDrinks(userData.coffeeTeaBoba);
+      setComfortMeal(userData.comfortFood);
+      setEntType(userData.movieShowBook);
+      setMovie(userData.topMovie);
+      setShow(userData.topShow);
+      setBook(userData.topBook);
+      setTaste(userData.musicTaste);
+      setArtist(userData.topArtist);
+    });
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -37,10 +79,10 @@ const UserProfile = ({ profileData }) => {
         </Button>
         <View style={styles.h1Container}>
           <Text style={styles.name} variant="titleMedium">
-            [Enter this.User's Name]
+            {userName}
           </Text>
           <Text style={styles.pronouns} variant="titleSmall">
-            [this.Pronouns]
+            {userPronouns}
           </Text>
         </View>
         <View style={styles.sections}>
@@ -52,25 +94,19 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Gender Identity:{" "}
         </Text>
-        <Text>
-          [Gender Identity goes here...] {profileData?.GenderIdentity}
-        </Text>
+        <Text>{genderIdentity}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Ethnic Identity:
         </Text>
-        <Text>
-          [Ethnic Identity goes here...] {profileData?.EthnicIdentity}
-        </Text>
+        <Text>{ethnicIdentity}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Personality Type:
         </Text>
-        <Text>
-          [Personality Type goes here...] {profileData?.PersonalityType}
-        </Text>
+        <Text>{personalityType}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Do you have any pets?:
         </Text>
-        <Text>[pets goes here...] {profileData?.Pets}</Text>
+        <Text> {pets}</Text>
         <View style={styles.sections}>
           <Text style={styles.h2} variant="titleMedium">
             Food
@@ -79,21 +115,15 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Dietary Restriction?
         </Text>
-        <Text>
-          [Dietary Restriction goes here...] {profileData?.DietaryRestriction}
-        </Text>
+        <Text>{diet}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Coffee, Tea, Boba, or All?
         </Text>
-        <Text>
-          [Coffee, Tea, Boba, or All goes here...] {profileData?.DrinkTypes}
-        </Text>
+        <Text>{drinks}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Comfort meals/food?
         </Text>
-        <Text>
-          [Dietary Restriction goes here...] {profileData?.ComfortFood}
-        </Text>
+        <Text>{comfortMeal}</Text>
         <View style={styles.sections}>
           <Text style={styles.h2} variant="titleMedium">
             Entertainment
@@ -102,30 +132,27 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Movie, show, book person:
         </Text>
-        <Text>
-          [Movie, show, book person goes here...]{" "}
-          {profileData?.EntertainmentType}
-        </Text>
+        <Text>{entType}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Movie:
         </Text>
-        <Text>[Top Movie goes here...] {profileData?.TopMovie}</Text>
+        <Text> {movie}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Show:
         </Text>
-        <Text>[Top Show goes here...] {profileData?.TopShow}</Text>
+        <Text> {show}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Book:
         </Text>
-        <Text>[Top Book goes here...] {profileData?.TopBook}</Text>
+        <Text> {book}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Music Taste:
         </Text>
-        <Text>[Music Taste goes here...] {profileData?.MusicTaste}</Text>
+        <Text> {taste}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Artist
         </Text>
-        <Text>[Top Artist goes here...] {profileData?.TopArtist}</Text>
+        <Text> {artist}</Text>
       </ScrollView>
     </SafeAreaView>
   );

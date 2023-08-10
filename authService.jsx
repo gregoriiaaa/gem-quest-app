@@ -58,7 +58,7 @@ class authService {
     } else {
       return null;
     }
-  }
+  };
 
   /** static currName = () => {
     const currUser = FIREBASE_AUTH.currentUser;
@@ -84,7 +84,7 @@ class authService {
   }*/
 }
 
-  /** static GetUserData = async(uid) => {
+/** static GetUserData = async(uid) => {
     await getUserById(uid)
     .then((userRecord) => {
       // See the UserRecord reference doc for the contents of userRecord.
