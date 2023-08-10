@@ -1,15 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Profile from "../screens/Profile";
+import { View, StyleSheet } from "react-native";
+import { Text, Button } from "react-native-paper";
+/* <Profile /> */
 
-import LogInForm from "../components/LogInForm";
-{
-  /* <Profile /> */
-}
 const UserProfile = ({ profileData }) => {
   return (
     <View style={styles.container}>
-      {/* <LogInForm /> */}
       <Text>Welcome to the Profile page!</Text>
       <Text>Gender Identity: {profileData?.GenderIdentity}</Text>
       <Text>Ethnic Identity: {profileData?.EthnicIdentity}</Text>
