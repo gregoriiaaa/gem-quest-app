@@ -1,37 +1,27 @@
 class Quest {
-  constructor(id, hostUid, date, location) {}
+  constructor(id, hostUid, date, location) {
+    this.id = id;
+    this.hostUid = hostUid;
+    this.date = date;
+    this.location = location;
+  }
 
-  /** Converts the JavaScript User Class into a plain JavaScript User Object.
-   *    @note Use this function for when you want to send a user object to firebase.
+  /** Converts the JavaScript Quest Class into a plain JavaScript Quest Object.
+   *    @note Use this function for when you want to send a quest object to firebase.
    *
-   *    @returns userObject
+   *    @returns questObject
    */
   toPlainJavaScriptObject() {
-    const userObject = {
-      name: this.name ? this.name : "",
-      email: this.email ? this.email : "",
-      dateOfBirth: this.dateOfBirth ? this.dateOfBirth : "",
-      pronouns: this.pronouns ? this.pronouns : "",
-      ethnicId: this.ethnicId ? this.ethnicId : "",
-      genderId: this.genderId ? this.genderId : "",
-      personalityType: this.personalityType ? this.personalityType : "",
-      petsDescription: this.petsDescription ? this.petsDescription : "",
-      dietaryRestrictions: this.dietaryRestrictions
-        ? this.dietaryRestrictions
-        : "",
-      coffeeTeaBoba: this.coffeeTeaBoba ? this.coffeeTeaBoba : "",
-      comfortFood: this.comfortFood ? this.comfortFood : "",
-      movieShowBook: this.movieShowBook ? this.movieShowBook : "",
-      topMovie: this.topMovie ? this.topMovie : "",
-      topShow: this.topShow ? this.topShow : "",
-      musicTaste: this.musicTaste ? this.musicTaste : "",
-      topArtist: this.topArtist ? this.topArtist : "",
+    const questObject = {
+      hostUid: this.hostUid ?? "",
+      date: this.date ?? "",
+      location: this.location ?? "",
     };
-    return userObject;
+    return questObject;
   }
 }
 
 // const user = new User();
 // console.log(user.name);
 
-export default User;
+export default Quest;
