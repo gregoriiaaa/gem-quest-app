@@ -93,14 +93,20 @@ const CreateAccountForm = ({ navigation }) => {
   const handleSubmit = async (values) => {
     // console.log(values);
     //alert(JSON.stringify(values, null, 2));
-    navigation.navigate("BuildProfile");
-    await authService.SignUp(
-      values.name,
-      values.email,
-      values.password,
-      values.birthday,
-      values.pronouns
-    );
+    try {
+      const result = await authService.SignUp(
+        values.name,
+        values.email,
+        values.password,
+        values.birthday,
+        values.pronouns
+      );
+      if (result && result.isSuccess) {
+        navigation.navigate("BuildProfile");
+      }
+    } catch (error) {
+      alert(`Error signing up: ${error}. Please try again.`);
+    }
   };
 
   return (
@@ -164,7 +170,6 @@ const CreateAccountForm = ({ navigation }) => {
             <Button
               onPress={() => {
                 formikProps.handleSubmit();
-                // navigation.navigate("BuildProfile");
               }}
               mode="contained"
               style={styles.button}
