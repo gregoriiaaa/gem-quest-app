@@ -33,20 +33,14 @@ const Goal = (props) => {
       />
       {/* Progress bar */}
       <Card.Content>
-        <Pressable
-          onPress={() => {
-            if (props.progress === props.maxProgress) {
-              console.log("do gem acq logic here");
-            }
-          }}
-        >
+        
           <View style={styles.progressBar}>
             <GoalProgress
               progress={props.progress}
               maxProgress={props.maxProgress}
             ></GoalProgress>
           </View>
-        </Pressable>
+        
       </Card.Content>
     </Card>
   );

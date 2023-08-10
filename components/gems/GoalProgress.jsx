@@ -1,11 +1,14 @@
 import { useState } from "react";
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import * as Progress from "react-native-progress";
 
-function isClaimable(progress, maxProgress) {
+function isClaimable(progress, maxProgress, text) {
+  if (text === "CLAIMED") {
+    return <Text style={styles.claimed}>{text}</Text>;
+  }
   if (progress === maxProgress) {
-    return <Text style={styles.claimable}>CLAIM</Text>;
+    return <Text style={styles.claimable}>{text}</Text>;
   }
   return <Text style={styles.textStyle}>{progress + "/" + maxProgress}</Text>;
 }
@@ -25,20 +28,30 @@ const GoalProgress = (props) => {
    *  action is completed.
    */
   const [progress, setProgress] = useState(props.progress);
+  const [claimed, setClaimed] = useState("CLAIM");
 
   return (
-    <View style={styles.container}>
-      <Progress.Bar
-        progress={progress / props.maxProgress}
-        animated={true}
-        color="#fde3e7"
-        unfilledColor="#fff1cb"
-        width={125}
-        height={20}
-        borderRadius={15}
-      ></Progress.Bar>
-      {isClaimable(progress, props.maxProgress)}
-    </View>
+    <Pressable
+      onPress={() => {
+        if (props.progress === props.maxProgress) {
+          console.log("do gem acq logic here");
+          setClaimed("CLAIMED");
+        }
+      }}
+    >
+      <View style={styles.container}>
+        <Progress.Bar
+          progress={progress / props.maxProgress}
+          animated={true}
+          color="#fde3e7"
+          unfilledColor="#fff1cb"
+          width={125}
+          height={20}
+          borderRadius={15}
+        ></Progress.Bar>
+        {isClaimable(progress, props.maxProgress, claimed)}
+      </View>
+    </Pressable>
   );
 };
 
@@ -66,6 +79,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 5,
     paddingLeft: 40,
+    paddingTop: 1.5,
+  },
+  claimed: {
+    fontStyle: "italic",
+    fontWeight: "bold",
+    color: "#6770e0",
+    flex: 1,
+    position: "absolute",
+    zIndex: 5,
+    paddingLeft: 35,
     paddingTop: 1.5,
   },
 });
