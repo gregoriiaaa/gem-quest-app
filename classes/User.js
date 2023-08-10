@@ -54,7 +54,9 @@ class User {
       genderId: this.genderId ? this.genderId : "",
       personalityType: this.personalityType ? this.personalityType : "",
       petsDescription: this.petsDescription ? this.petsDescription : "",
-      dietaryRestrictions: this.dietaryRestrictions ? this.dietaryRestrictions : "",
+      dietaryRestrictions: this.dietaryRestrictions
+        ? this.dietaryRestrictions
+        : "",
       coffeeTeaBoba: this.coffeeTeaBoba ? this.coffeeTeaBoba : "",
       comfortFood: this.comfortFood ? this.comfortFood : "",
       movieShowBook: this.movieShowBook ? this.movieShowBook : "",

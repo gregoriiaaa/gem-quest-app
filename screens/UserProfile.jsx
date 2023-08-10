@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import authService from "../authService.jsx";
 import { getUserById } from "../database/userQueries.js";
 
-const UserProfile = ({ profileData }) => {
+const UserProfile = () => {
   const currentUID = authService.currUID();
 
   const [userName, setUserName] = useState(null);
@@ -33,7 +33,8 @@ const UserProfile = ({ profileData }) => {
 
   useEffect(() => {
     //gets the data updates the state
-    getUserById(currentUID).then(userData => {
+    getUserById(currentUID).then((userData) => {
+      console.log({ userData });
       setUserName(userData.name);
       setUserPronouns(userData.pronouns);
       setGenderIdentity(userData.genderId);
@@ -93,25 +94,19 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Gender Identity:{" "}
         </Text>
-        <Text>
-          {genderIdentity} {profileData?.GenderIdentity}
-        </Text>
+        <Text>{genderIdentity}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Ethnic Identity:
         </Text>
-        <Text>
-          {ethnicIdentity} {profileData?.EthnicIdentity}
-        </Text>
+        <Text>{ethnicIdentity}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Personality Type:
         </Text>
-        <Text>
-          {personalityType} {profileData?.PersonalityType}
-        </Text>
+        <Text>{personalityType}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Do you have any pets?:
         </Text>
-        <Text> {pets} {profileData?.Pets}</Text>
+        <Text> {pets}</Text>
         <View style={styles.sections}>
           <Text style={styles.h2} variant="titleMedium">
             Food
@@ -120,21 +115,15 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Dietary Restriction?
         </Text>
-        <Text>
-          {diet} {profileData?.DietaryRestriction}
-        </Text>
+        <Text>{diet}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Coffee, Tea, Boba, or All?
         </Text>
-        <Text>
-          {drinks} {profileData?.DrinkTypes}
-        </Text>
+        <Text>{drinks}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Comfort meals/food?
         </Text>
-        <Text>
-          {comfortMeal} {profileData?.ComfortFood}
-        </Text>
+        <Text>{comfortMeal}</Text>
         <View style={styles.sections}>
           <Text style={styles.h2} variant="titleMedium">
             Entertainment
@@ -143,30 +132,27 @@ const UserProfile = ({ profileData }) => {
         <Text style={styles.h3} variant="titleSmall">
           Movie, show, book person:
         </Text>
-        <Text>
-          {entType} {" "}
-          {profileData?.EntertainmentType}
-        </Text>
+        <Text>{entType}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Movie:
         </Text>
-        <Text> {movie} {profileData?.TopMovie}</Text>
+        <Text> {movie}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Show:
         </Text>
-        <Text> {show} {profileData?.TopShow}</Text>
+        <Text> {show}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Book:
         </Text>
-        <Text> {book} {profileData?.TopBook}</Text>
+        <Text> {book}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Music Taste:
         </Text>
-        <Text> {taste} {profileData?.MusicTaste}</Text>
+        <Text> {taste}</Text>
         <Text style={styles.h3} variant="titleSmall">
           Top Artist
         </Text>
-        <Text> {artist} {profileData?.TopArtist}</Text>
+        <Text> {artist}</Text>
       </ScrollView>
     </SafeAreaView>
   );

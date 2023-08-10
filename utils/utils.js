@@ -18,6 +18,7 @@ export default function transformFbUserToJsUser(uid, userObject) {
     userObject.movieShowBook,
     userObject.topMovie,
     userObject.topShow,
+    userObject.topBook,
     userObject.musicTaste,
     userObject.topArtist
   );
