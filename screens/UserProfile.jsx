@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     color: "#56595D",
   },
   sections: {
-    width: 350,
+    width: "100%",
     height: 60,
     borderBottomWidth: 3,
     borderBottomColor: "#21005d",
