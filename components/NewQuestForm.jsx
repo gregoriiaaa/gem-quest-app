@@ -3,6 +3,9 @@ import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Quest from "../classes/Quest";
+import authService from "../authService.jsx";
+import { addNewQuest } from "../database/questQueries";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -83,6 +86,22 @@ const NewQuestFrom = ({ navigation }) => {
 
   const handleSubmit = async (values) => {
     console.log(values);
+    const currentUID = authService.currUID();
+    const newQuestObject = new Quest(
+      "",
+      values.title,
+      currentUID,
+      values.date,
+      values.time,
+      values.agegroup,
+      values.rsvplimit,
+      values.restaurant,
+      values.outdoorspace,
+      values.planofaction,
+      []
+    )
+    console.log(newQuestObject);
+    addNewQuest(newQuestObject);
     //alert(JSON.stringify(values, null, 2));
   };
 
@@ -154,9 +173,9 @@ const NewQuestFrom = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={() => {
-                formikProps.handleSubmit();
-                //navigation.navigate("BuildProfile");
+              onPress={async () => {
+                await formikProps.handleSubmit();
+                navigation.navigate("LayoutScreen");
               }}
               mode="contained"
               style={styles.button}

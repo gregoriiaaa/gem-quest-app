@@ -1,6 +1,7 @@
 class Quest {
   constructor(
     id,
+    title,
     hostUid,
     date,
     time,
@@ -12,6 +13,7 @@ class Quest {
     listOfAttendingUsers = []
   ) {
     this.id = id;
+    this.title = title;
     this.hostUid = hostUid;
     this.date = date;
     this.time = time;
@@ -30,6 +32,7 @@ class Quest {
    */
   toPlainJavaScriptObject() {
     const questObject = {
+      title: this.title ?? "",
       hostUid: this.hostUid ?? "",
       date: this.date ?? "",
       time: this.time ?? "",
