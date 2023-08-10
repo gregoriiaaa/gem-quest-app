@@ -28,6 +28,7 @@ export function transformFbQuestToJsQuest(id, questObject) {
   console.log({ id, questObject });
   return new Quest(
     id,
+    questObject.title,
     questObject.hostUid,
     questObject.date,
     questObject.time,

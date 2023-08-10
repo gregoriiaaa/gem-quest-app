@@ -175,7 +175,7 @@ const NewQuestFrom = ({ navigation }) => {
             <Button
               onPress={async () => {
                 await formikProps.handleSubmit();
-                navigation.navigate("LayoutScreen");
+                navigation.navigate("Home");
               }}
               mode="contained"
               style={styles.button}
