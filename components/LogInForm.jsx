@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
 import authService from "../authService.jsx";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -48,7 +49,7 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const CreateAccountForm = ({ navigation }) => {
+const LogInForm = ({ navigation }) => {
   const initialValues = {
     email: "",
     password: "",
@@ -59,12 +60,20 @@ const CreateAccountForm = ({ navigation }) => {
       .email("Invalid email")
       .required("Berkeley email is required")
       .matches(/^.*@berkeley\.edu$/, 'Email must end with "@berkeley.edu"'),
+    password: Yup.string().required("Password is required"),
   });
 
   const handleSubmit = async (values) => {
     // await sleep(500);
     //alert(JSON.stringify(values, null, 2));
-    await authService.LogIn(values.email, values.password);
+    try {
+      const result = await authService.LogIn(values.email, values.password);
+      if (result && result.isSuccess) {
+        navigation.navigate("LayoutScreen");
+      }
+    } catch (error) {
+      alert(`Error logging in: ${error}. Please try again.`);
+    }
   };
 
   return (
@@ -88,12 +97,22 @@ const CreateAccountForm = ({ navigation }) => {
             formikKey="password"
             secureTextEntry={true}
           />
-          <Text style={styles.forgotPassword} textColor="#21005D">
-            Forgot password?
+          <Text style={styles.signUpText}>
+            Don't have an account?{" "}
+            <Text>
+              {/* Wrap only the "Sign Up" text with TouchableOpacity */}
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Create Account")}
+              >
+                <Text style={styles.signUpLink}>Sign Up</Text>
+              </TouchableOpacity>
+            </Text>
           </Text>
           <View style={styles.buttonContainer}>
             <Button
-              onPress={formikProps.handleSubmit}
+              onPress={() => {
+                formikProps.handleSubmit();
+              }}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -120,11 +139,16 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#56595D",
   },
-  forgotPassword: {
+  signUpText: {
     marginTop: 10,
     fontStyle: "italic",
     fontSize: "x-small",
   },
+  signUpLink: {
+    color: "#21005D",
+    textDecorationLine: "underline", // Add underline to indicate a link
+  },
+
   button: {
     marginVertical: 2,
     borderRadius: 5,
@@ -145,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateAccountForm;
+export default LogInForm;
