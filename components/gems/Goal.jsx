@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { Avatar, Card } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import GoalProgress from "./GoalProgress";
 
@@ -32,16 +33,29 @@ const Goal = (props) => {
       />
       {/* Progress bar */}
       <Card.Content>
-        <View style={styles.progressBar}>
-          <GoalProgress
-            progress={props.progress}
-            maxProgress={props.maxProgress}
-          ></GoalProgress>
-        </View>
+        <Pressable
+          onPress={() => {
+            if (props.progress === props.maxProgress) {
+              displayGemAcquisition();
+            }
+          }}
+        >
+          <View style={styles.progressBar}>
+            <GoalProgress
+              progress={props.progress}
+              maxProgress={props.maxProgress}
+            ></GoalProgress>
+          </View>
+        </Pressable>
       </Card.Content>
     </Card>
   );
 };
+
+function displayGemAcquisition() {
+  const navigation = useNavigation();
+  navigation.navigate("GemAquisition");
+}
 
 /**
  *  Styles are slightly forced with hard-coded numerical values.
