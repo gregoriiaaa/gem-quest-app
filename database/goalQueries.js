@@ -26,39 +26,28 @@ export async function initGoals(goals) {
 
 // Firestore Goal converter
 const goalConverter = {
-    toFirestore: (goal) => {
-        return {
-            description: goal.description,
-            index: goal.index,
-            maxProgress: goal.maxProgress,
-            value: goal.value
-            };
-    },
-    fromFirestore: (snapshot, options) => {
-        const data = snapshot.data(options);
-        return new Goal(data.description, data.index, data.maxProgress, data.value);
-    }
+  toFirestore: (goal) => {
+    return {
+      description: goal.description,
+      index: goal.index,
+      maxProgress: goal.maxProgress,
+      value: goal.value,
+    };
+  },
+  fromFirestore: (snapshot, options) => {
+    const data = snapshot.data(options);
+    return new Goal(data.description, data.index, data.maxProgress, data.value);
+  },
 };
 
 export async function getUserGoals(uid) {
-
   const userGoalsRef = doc(db, "users", uid, "userGoals");
   const userGoalsDocSnap = await getDoc(userGoalsRef);
 
   userGoalsDocSnap.forEach((doc) => {
-    const ref = doc(db, "cities", "LA").withConverter(cityConverter);
-    const docSnap = await getDoc(ref);
-    if (docSnap.exists()) {
-    // Convert to City object
+    doc.withConverter(goalConverter);
     const city = docSnap.data();
     // Use a City instance method
     console.log(city.toString());
-    } else {
-    console.log("No such document!");
+  });
 }
-  })
-
-}
-
-
-export async function addToUserGoals()

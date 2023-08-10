@@ -3,14 +3,11 @@ import { StyleSheet } from "react-native";
 import GemScreen from "./gems/GemScreen";
 
 import { getAuth } from "firebase/auth";
-const auth = getAuth();
-const user = auth.currentUser;
+// const auth = getAuth();
+// const user = auth.currentUser;
 
 const Gems = () => {
-  return (
-    
-    <GemScreen progress={990} maxProgress={1250}></GemScreen>
-  );
+  return <GemScreen progress={990} maxProgress={1250}></GemScreen>;
 };
 
 const styles = StyleSheet.create({

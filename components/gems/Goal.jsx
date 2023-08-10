@@ -23,6 +23,8 @@ const Goal = (props) => {
         titleStyle={styles.description}
         left={(props) => (
           <Avatar.Image
+            style={{ paddingTop: 10, backgroundColor: null }}
+            alt="goal-icon"
             size={45}
             source={require("../../assets/gemQuest.png")}
           />

@@ -36,7 +36,7 @@ const GemAcquisition = (props) => {
             <Text style={[styles.acquiredGem, { color: props.color }]}>
               {props.gem}
             </Text>
-            <Image style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
+            <Image alt="newly-acquired-gem" style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
           </View>
         </View>
         {/* Continue button (TODO: navigate to right page) */}
