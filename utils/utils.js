@@ -25,6 +25,7 @@ export function transformFbUserToJsUser(uid, userObject) {
 }
 
 export function transformFbQuestToJsQuest(id, questObject) {
+  console.log({ id, questObject });
   return new Quest(
     id,
     questObject.hostUid,
@@ -34,7 +35,8 @@ export function transformFbQuestToJsQuest(id, questObject) {
     questObject.rsvpLimit,
     questObject.restaurant,
     questObject.outdoorSpot,
-    questObject.planOfAction
+    questObject.planOfAction,
+    questObject.listOfAttendingUsers
   );
 }
 

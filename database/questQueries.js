@@ -1,5 +1,13 @@
 import db from "./FirebaseConfig.js";
-import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 import Quest from "../classes/Quest.js";
 import { transformFbQuestToJsQuest } from "../utils/utils.js";
 
@@ -26,7 +34,8 @@ export async function addNewQuest(quest) {
   }
 }
 
-/** Gets a quest from the Firebase with the given id and returns a Quest JavaScript Class Object.
+/** Gets a single quest document from the Firebase with the given quest id and returns as a Quest JavaScript Class Object.
+ *    @note the id should be the quest's unique id
  *
  *    @params id: string
  *    @returns quest: Quest
@@ -46,6 +55,63 @@ export async function getQuestById(id) {
     } else {
       throw Error("No such document!");
     }
+  } catch (e) {
+    console.error("Error getting document: ", e);
+  }
+}
+
+/** Gets a all the quest documents from the Firebase that is hosted by the user with the given uid. Returns
+ *  a list of Quest JavaScript Class Objects.
+ *    @note the uid is the host's user id
+ *
+ *    @params uid: string
+ *    @returns listOfQuests: Quest[]
+ */
+export async function getQuestsByHostUid(uid) {
+  try {
+    let listOfQuests = [];
+    const q = query(collection(db, "quests"), where("hostUid", "==", uid));
+
+    const querySnapshot = await getDocs(q);
+    // console.log(querySnapshot);
+    querySnapshot.forEach((questDoc) => {
+      // doc.data() is never undefined for query doc snapshots
+      const questGotten = questDoc.data();
+      const questId = questDoc.id;
+      console.log(questId, " => ", questGotten);
+      listOfQuests.push(transformFbQuestToJsQuest(questId, questGotten));
+    });
+    return listOfQuests;
+  } catch (e) {
+    console.error("Error getting document: ", e);
+  }
+}
+
+/** Gets a all the quest documents from the Firebase that the user with the given uid has RSVPed to. Returns
+ *  a list of Quest JavaScript Class Objects.
+ *    @note the uid is the user id
+ *
+ *    @params uid: string
+ *    @returns listOfQuests: Quest[]
+ */
+export async function getAttendingQuestsByUid(uid) {
+  try {
+    let listOfQuests = [];
+    const q = query(
+      collection(db, "quests"),
+      where("listOfAttendingUsers", "array-contains", uid)
+    );
+
+    const querySnapshot = await getDocs(q);
+    // console.log(querySnapshot);
+    querySnapshot.forEach((questDoc) => {
+      // doc.data() is never undefined for query doc snapshots
+      const questGotten = questDoc.data();
+      const questId = questDoc.id;
+      console.log(questId, " => ", questGotten);
+      listOfQuests.push(transformFbQuestToJsQuest(questId, questGotten));
+    });
+    return listOfQuests;
   } catch (e) {
     console.error("Error getting document: ", e);
   }

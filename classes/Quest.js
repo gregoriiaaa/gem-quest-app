@@ -8,7 +8,8 @@ class Quest {
     rsvpLimit = "",
     restaurant = "",
     outdoorSpot = "",
-    planOfAction
+    planOfAction,
+    listOfAttendingUsers = []
   ) {
     this.id = id;
     this.hostUid = hostUid;
@@ -19,6 +20,7 @@ class Quest {
     this.restaurant = restaurant;
     this.outdoorSpot = outdoorSpot;
     this.planOfAction = planOfAction;
+    this.listOfAttendingUsers = listOfAttendingUsers;
   }
 
   /** Converts the JavaScript Quest Class into a plain JavaScript Quest Object.
@@ -36,6 +38,7 @@ class Quest {
       restaurant: this.restaurant ?? "",
       outdoorSpot: this.outdoorSpot ?? "",
       planOfAction: this.planOfAction ?? "",
+      listOfAttendingUsers: this.listOfAttendingUsers ?? [],
     };
     return questObject;
   }
