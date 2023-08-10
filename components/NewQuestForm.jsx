@@ -3,7 +3,6 @@ import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
-//import CalendarPicker from 'react-native-calendar-picker';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -48,7 +47,7 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const QuestForm = ({ navigation }) => {
+const NewQuestFrom = ({ navigation }) => {
   const initialValues = {
     title: "",
     date: "",
@@ -57,7 +56,7 @@ const QuestForm = ({ navigation }) => {
     rsvplimit: "",
     restaurant: "",
     outdoorspace: "",
-    planofaction: "",
+    plan: "",
   };
 
   const validationSchema = Yup.object({
@@ -83,25 +82,9 @@ const QuestForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
     console.log(values);
-    alert(JSON.stringify(values, null, 2));
+    //alert(JSON.stringify(values, null, 2));
   };
-
-  const ageList = [
-    {
-      label: "18-20",
-      value: "18-20",
-    },
-    {
-      label: "21-25",
-      value: "21-25",
-    },
-    {
-      label: "25+",
-      value: "25+",
-    },
-  ]
 
   return (
     <Formik
@@ -111,45 +94,56 @@ const QuestForm = ({ navigation }) => {
     >
       {(formikProps) => (
         <View>
-          <TextInputLiveFeedback
-            label="Title"
-            formikProps={formikProps}
-            formikKey="title"
-            placeholder="Enter your event title..."
-          />
+            <TextInputLiveFeedback
+                label="Title"
+                formikProps={formikProps}
+                formikKey="title"
+                placeholder="Enter your event title..."
+            />
 
-          <TextInputLiveFeedback
-            label="Date"
-            formikProps={formikProps}
-            formikKey="date"
-            placeholder="MM/DD/YYYY"
-          />
+            <TextInputLiveFeedback
+                label="Date"
+                formikProps={formikProps}
+                formikKey="date"
+                placeholder="MM/DD/YYYY"
+            />
 
-          <TextInputLiveFeedback
-            label="Time"
-            formikProps={formikProps}
-            formikKey="time"
-            placeholder="00:00am"
-          />
+            <TextInputLiveFeedback
+                label="Time"
+                formikProps={formikProps}
+                formikKey="time"
+                placeholder="00:00am"
+            />
 
-          <TextInputLiveFeedback
-            label="Restaurant"
-            formikProps={formikProps}
-            formikKey="restaurant"
-          />
+            <TextInputLiveFeedback
+                label="Age Group"
+                formikProps={formikProps}
+                formikKey="agegroup"
+            />
 
-          <TextInputLiveFeedback
-            label="Outdoor Space"
-            formikProps={formikProps}
-            formikKey="outdoorspace"
-          />
+            <TextInputLiveFeedback
+                label="RSVP limit"
+                formikProps={formikProps}
+                formikKey="rsvplimit"
+            />
 
-          <TextInputLiveFeedback
-            label="Plan of Action"
-            formikProps={formikProps}
-            formikKey="planofaction"
-          />
+            <TextInputLiveFeedback
+                label="Restaurant"
+                formikProps={formikProps}
+                formikKey="restaurant"
+            />
 
+            <TextInputLiveFeedback
+                label="Outdoor Space"
+                formikProps={formikProps}
+                formikKey="outdoorspace"
+            />
+
+            <TextInputLiveFeedback
+                label="Plan of Action"
+                formikProps={formikProps}
+                formikKey="planofaction"
+            />
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigation.navigate("LayoutScreen")}
@@ -160,7 +154,10 @@ const QuestForm = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={formikProps.handleSubmit}
+              onPress={() => {
+                formikProps.handleSubmit();
+                //navigation.navigate("BuildProfile");
+              }}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -183,7 +180,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: ".5em",
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },
@@ -207,4 +204,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuestForm;
+export default NewQuestFrom;

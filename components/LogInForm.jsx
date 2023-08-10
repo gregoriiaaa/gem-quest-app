@@ -5,8 +5,6 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import authService from "../authService.jsx";
 
-import authService from "../authService.jsx";
-
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const TextInputLiveFeedback = ({
@@ -67,15 +65,9 @@ const LogInForm = ({ navigation }) => {
 
 
   const handleSubmit = async (values) => {
-<<<<<<< HEAD
-    await sleep(500);
-    //alert(JSON.stringify(values, null, 2));
-    authService.LogIn(values.email, values.password);
-=======
     // await sleep(500);
     //alert(JSON.stringify(values, null, 2));
     await authService.LogIn(values.email, values.password);
->>>>>>> 9b7c71002f1b6d55958d3035523e8ab44543553b
   };
 
   return (
