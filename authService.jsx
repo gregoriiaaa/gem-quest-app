@@ -8,6 +8,7 @@ import User from "./classes/User.js";
 
 class authService {
   static SignUp = async (name, email, password, birthday, pronouns) => {
+    let isSuccess = false;
     await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -19,27 +20,35 @@ class authService {
           pronouns
         );
         setUserDoc(userObject);
-        alert(`User with email ${email} successfuly created!`);
+        isSuccess = true;
       })
       .catch((error) => {
         //const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
       });
+    // TODO: ADD QUERY TO ADD USER GOALS AND POINTS HERE
+    if (isSuccess) {
+      return { isSuccess: isSuccess };
+    }
   };
 
   static LogIn = async (email, password) => {
+    let isSuccess = false;
     await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user.email);
-        alert(`User with email ${email} successfuly logged in!`);
+        isSuccess = true;
       })
       .catch((error) => {
         //const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
       });
+    if (isSuccess) {
+      return { isSuccess: isSuccess };
+    }
   };
 }
 
