@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import {
   Avatar,
@@ -12,26 +12,36 @@ import authService from "../authService.jsx";
 import { getUserById } from "../database/userQueries";
 
 const MyQuestsCards = () => {
-  const [listOfQuests, setListOfQuests] = useState([]);
+  const [listOfMyQuests, setListOfMyQuests] = useState([]);
   const [hostName, setHostName] = useState("");
   const currentUID = authService.currUID();
-  const currName = async () => {
-    const userObject = await getUserById(currentUID)
-    const userName = userObject.name;
-    setHostName(userName);
-  }
 
   useEffect(() => {
+    const currName = async () => {
+      if (currentUID === undefined) {
+        console.log("No current uid.");
+      } else {
+        const userObject = await getUserById(currentUID);
+        const userName = userObject.name;
+        setHostName(userName);
+        console.log({ hostName: hostName });
+      }
+    };
     currName();
   });
 
-  console.log(hostName);
-
   useEffect(() => {
-    getQuestsByHostUid(currentUID).then((questData) => {
-      setListOfQuests(questData);
-    });
-  });
+    async function getMyQuests() {
+      if (currentUID === undefined) {
+        console.log("No current uid.");
+      } else {
+        const lstOfMyQuests = await getQuestsByHostUid(currentUID);
+        setListOfMyQuests(lstOfMyQuests);
+        console.log({ listOfMyQuests: listOfMyQuests });
+      }
+    }
+    getMyQuests();
+  }, [currentUID]);
 
   return (
     <View style={styles.container}>
@@ -45,46 +55,46 @@ const MyQuestsCards = () => {
         horizontal={true}
         contentContainerStyle={styles.cardContainer}
       >
-        {listOfQuests.map((item, index) => (
-        <TouchableRipple 
-          onPress={() => console.log("Pressed")}
-          rippleColor="rgba(0, 0, 0, .32)"
-          key={index}
-        >
-          <Card elevation={4} style={styles.card}>
-            <Card.Cover
-              source={{
-                uri: `https://source.unsplash.com/random/700/?${item.title}`,
-                alt: "Random image of the event title by unsplash images",
-              }}
-            />
-            <Card.Title
-              title= "My Quest"
-              titleVariant="titleMedium"
-              subtitle= {`${item.date} at ${item.time}`}
-            />
-            <Card.Content>
-              <Text style={styles.bold} variant="bodyLarge">
-              {item.title}
-              </Text>
-              <Text variant="bodyMedium">{`RSVP: 1/${item.rsvpLimit}`}</Text>
-              <Text variant="bodyMedium">Hosted by: {hostName}</Text>
-            </Card.Content>
-            <Card.Actions style={styles.cardActions}>
-              <Button
-                mode="contained-tonal"
-                icon="cancel"
-                contentStyle={styles.submitButtonContent}
-              >
-                Cancel
-              </Button>
-              <Button icon="application-edit-outline">Edit</Button>
-            </Card.Actions>
-          </Card>
-        </TouchableRipple>
+        {listOfMyQuests.map((item, index) => (
+          <TouchableRipple
+            onPress={() => console.log("Pressed")}
+            rippleColor="rgba(0, 0, 0, .32)"
+            key={index}
+          >
+            <Card elevation={4} style={styles.card}>
+              <Card.Cover
+                source={{
+                  uri: `https://source.unsplash.com/random/700/?${item.title}`,
+                  alt: "Random image of the event title by unsplash images",
+                }}
+              />
+              <Card.Title
+                title="My Quest"
+                titleVariant="titleMedium"
+                subtitle={`${item.date} at ${item.time}`}
+              />
+              <Card.Content>
+                <Text style={styles.bold} variant="bodyLarge">
+                  {item.title}
+                </Text>
+                <Text variant="bodyMedium">{`RSVP: 1/${item.rsvpLimit}`}</Text>
+                <Text variant="bodyMedium">Hosted by: {hostName}</Text>
+              </Card.Content>
+              <Card.Actions style={styles.cardActions}>
+                <Button
+                  mode="contained-tonal"
+                  icon="cancel"
+                  contentStyle={styles.submitButtonContent}
+                >
+                  Cancel
+                </Button>
+                <Button icon="application-edit-outline">Edit</Button>
+              </Card.Actions>
+            </Card>
+          </TouchableRipple>
         ))}
 
-        <TouchableRipple
+        {/* <TouchableRipple
           onPress={() => console.log("Pressed")}
           rippleColor="rgba(0, 0, 0, .32)"
         >
@@ -154,7 +164,7 @@ const MyQuestsCards = () => {
               <Button icon="application-edit-outline">Edit</Button>
             </Card.Actions>
           </Card>
-        </TouchableRipple>
+        </TouchableRipple> */}
       </ScrollView>
     </View>
   );
