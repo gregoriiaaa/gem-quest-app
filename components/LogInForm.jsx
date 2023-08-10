@@ -49,7 +49,6 @@ const TextInputLiveFeedback = ({
 };
 
 const LogInForm = ({ navigation }) => {
-
   const initialValues = {
     email: "",
     password: "",
@@ -63,11 +62,17 @@ const LogInForm = ({ navigation }) => {
     password: Yup.string().required("Password is required"),
   });
 
-
   const handleSubmit = async (values) => {
     // await sleep(500);
     //alert(JSON.stringify(values, null, 2));
-    await authService.LogIn(values.email, values.password);
+    try {
+      const result = await authService.LogIn(values.email, values.password);
+      if (result && result.isSuccess) {
+        navigation.navigate("LayoutScreen");
+      }
+    } catch (error) {
+      alert(`Error logging in: ${error}. Please try again.`);
+    }
   };
 
   return (
@@ -105,10 +110,8 @@ const LogInForm = ({ navigation }) => {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => {
-                // formikProps.handleSubmit();
-                navigation.navigate("LayoutScreen");
+                formikProps.handleSubmit();
               }}
-
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -136,7 +139,6 @@ const styles = StyleSheet.create({
     color: "#56595D",
   },
   signUpText: {
-
     marginTop: 10,
     fontStyle: "italic",
     fontSize: "x-small",
@@ -167,4 +169,3 @@ const styles = StyleSheet.create({
 });
 
 export default LogInForm;
-

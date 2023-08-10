@@ -1,7 +1,8 @@
+import Quest from "../classes/Quest.js";
 import User from "../classes/User.js";
 
 // I use this function for the queries stuff
-export default function transformFbUserToJsUser(uid, userObject) {
+export function transformFbUserToJsUser(uid, userObject) {
   return new User(
     uid,
     userObject.name,
@@ -20,6 +21,22 @@ export default function transformFbUserToJsUser(uid, userObject) {
     userObject.topShow,
     userObject.musicTaste,
     userObject.topArtist
+  );
+}
+
+export function transformFbQuestToJsQuest(id, questObject) {
+  console.log({ id, questObject });
+  return new Quest(
+    id,
+    questObject.hostUid,
+    questObject.date,
+    questObject.time,
+    questObject.ageGroup,
+    questObject.rsvpLimit,
+    questObject.restaurant,
+    questObject.outdoorSpot,
+    questObject.planOfAction,
+    questObject.listOfAttendingUsers
   );
 }
 

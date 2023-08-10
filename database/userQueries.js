@@ -1,7 +1,7 @@
 import db from "./FirebaseConfig.js";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import User from "../classes/User.js";
-import transformFbUserToJsUser from "../utils/utils.js";
+import { transformFbUserToJsUser } from "../utils/utils.js";
 
 /** Takes a User Javascript Class Object and overwrites the corresponding Firebase user document
  *  (according to the uid), or creates a new Firebase user document if it doesn't already exist.
