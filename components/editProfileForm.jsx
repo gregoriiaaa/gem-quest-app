@@ -3,6 +3,9 @@ import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import authService from "../authService.jsx";
+import { getUserById, setUserDoc } from "../database/userQueries.js";
+import User from "../classes/User.js";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -86,15 +89,39 @@ const editProfileForm = ({ navigation }) => {
   const handleSubmit = async (values) => {
     // await sleep(500);
     // alert(JSON.stringify(values, null, 2));
+    const currentUID = authService.currUID();
+    getUserById(currentUID).then(userData => {
+      console.log(values.Pets);
+      const newUserObject = new User(
+        userData.uid,
+        userData.name,
+        userData.email,
+        userData.dateOfBirth,
+        userData.pronouns,
+        values.EthnicIdentity,
+        values.GenderIdentity,
+        values.PersonalityType,
+        values.Pets,
+        values.DietaryRestriction,
+        values.DrinkTypes,
+        values.ComfortFood,
+        values.EntertainmentType,
+        values.TopMovie,
+        values.TopShow, 
+        values.TopBook,
+        values.MusicTaste,
+        values.TopArtist
+      );
+      console.log(newUserObject);
+      setUserDoc(newUserObject);
+    })
     navigation.navigate("Profile", { profileData: values });
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => {
-        handleSubmit(values);
-      }}
+      onSubmit={handleSubmit}
       validationSchema={validationSchema}
       enableReinitialize
     >
@@ -229,7 +256,7 @@ const editProfileForm = ({ navigation }) => {
             <Button
               onPress={() => {
                 formikProps.handleSubmit();
-                // navigation.navigate("LayoutScreen");
+                navigation.navigate("LayoutScreen");
               }}
               mode="contained"
               style={styles.button}
