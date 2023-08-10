@@ -51,7 +51,12 @@ const PointsBar = (props) => {
         </View>
         {/* Gem avatar in circle */}
         <View style={styles.gemAvatar}>
-          <Avatar.Image size={42} source={props.icon} style={styles.icon} />
+          <Avatar.Image
+            alt="current-gem"
+            size={42}
+            source={props.icon}
+            style={styles.icon}
+          />
         </View>
       </View>
       {/* Remaining points. Separated for flexing underneath. */}
@@ -71,7 +76,7 @@ const PointsBar = (props) => {
  */
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
+    marginTop: 50,
     flexDirection: "row",
   },
   progressBar: {

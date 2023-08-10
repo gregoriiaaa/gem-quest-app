@@ -15,14 +15,13 @@ import DraftsCard from "../components/draftsCard";
 
 import { Searchbar } from "react-native-paper";
 
-import Quest from "../classes/Quest";
-import {
-  addNewQuest,
-  getQuestsByHostUid,
-  getQuestById,
-  getAttendingQuestsByUid,
-} from "../database/questQueries";
-
+// import Quest from "../classes/Quest";
+// import {
+//   addNewQuest,
+//   getQuestsByHostUid,
+//   getQuestById,
+//   getAttendingQuestsByUid,
+// } from "../database/questQueries";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
