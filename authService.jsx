@@ -27,6 +27,7 @@ class authService {
         const errorMessage = error.message;
         alert(errorMessage);
       });
+    // TODO: ADD QUERY TO ADD USER GOALS AND POINTS HERE
     if (isSuccess) {
       return { isSuccess: isSuccess };
     }
