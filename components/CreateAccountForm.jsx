@@ -91,8 +91,9 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    // console.log(values);
     //alert(JSON.stringify(values, null, 2));
+    navigation.navigate("BuildProfile");
     await authService.SignUp(
       values.name,
       values.email,
@@ -162,8 +163,8 @@ const CreateAccountForm = ({ navigation }) => {
             </Button>
             <Button
               onPress={() => {
-                // formikProps.handleSubmit();
-                navigation.navigate("BuildProfile");
+                formikProps.handleSubmit();
+                // navigation.navigate("BuildProfile");
               }}
               mode="contained"
               style={styles.button}
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: .5,
+    marginTop: 0.5,
     fontWeight: "700",
     color: "#56595D",
   },
