@@ -15,10 +15,10 @@ const WelcomeScreen = ({ navigation }) => {
   };
 
   // ADDED THE FOLLOWING FUNCTION FOR ACCESS TO THE NAV BAR LOGGIN IN
-  const handleLayoutPress = () => {
-    // console.log("HELLO WORLD");
-    navigation.navigate("LayoutScreen");
-  };
+  // const handleLayoutPress = () => {
+  //   // console.log("HELLO WORLD");
+  //   navigation.navigate("LayoutScreen");
+  // };
 
   return (
     <View style={styles.container}>
@@ -55,11 +55,11 @@ const WelcomeScreen = ({ navigation }) => {
           Forgot password?
         </Text>
         {/* ADDED THE FOLLOWING BUTTON FOR ACCESS TO THE NAV BAR LOGGIN IN */}
-        <Button
+        {/* <Button
           style={styles.button}
           mode="outlined"
           onPress={handleLayoutPress}
-        ></Button>
+        ></Button> */}
       </View>
     </View>
   );
