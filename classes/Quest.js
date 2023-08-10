@@ -1,9 +1,24 @@
 class Quest {
-  constructor(id, hostUid, date, location) {
+  constructor(
+    id,
+    hostUid,
+    date,
+    time,
+    ageGroup,
+    rsvpLimit = "",
+    restaurant = "",
+    outdoorSpot = "",
+    planOfAction
+  ) {
     this.id = id;
     this.hostUid = hostUid;
     this.date = date;
-    this.location = location;
+    this.time = time;
+    this.ageGroup = ageGroup;
+    this.rsvpLimit = rsvpLimit;
+    this.restaurant = restaurant;
+    this.outdoorSpot = outdoorSpot;
+    this.planOfAction = planOfAction;
   }
 
   /** Converts the JavaScript Quest Class into a plain JavaScript Quest Object.
@@ -15,7 +30,12 @@ class Quest {
     const questObject = {
       hostUid: this.hostUid ?? "",
       date: this.date ?? "",
-      location: this.location ?? "",
+      time: this.time ?? "",
+      ageGroup: this.ageGroup ?? "",
+      rsvpLimit: this.rsvpLimit ?? "",
+      restaurant: this.restaurant ?? "",
+      outdoorSpot: this.outdoorSpot ?? "",
+      planOfAction: this.planOfAction ?? "",
     };
     return questObject;
   }

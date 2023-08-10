@@ -1,25 +1,24 @@
 import db from "./FirebaseConfig.js";
 import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
 import Quest from "../classes/Quest.js";
-import transformFbQuestToJsQuest from "../utils/utils.js";
+import { transformFbQuestToJsQuest } from "../utils/utils.js";
 
-/** Adds a new user with a firebase auto-generated id to the database.
- *    @note Use this function if you want a new user that doesn't also have authenticated user credentials.
+/** Adds a new quest with a firebase auto-generated id to the database.
  *
- *    @params user: Javascript Class Object
- *    @returns userObject
+ *    @params quest: Javascript Class Object
+ *    @returns questObject
  */
-async function addNewQuery(user) {
+export async function addNewQuest(quest) {
   try {
-    if (!user || !(user instanceof User)) {
+    if (!quest || !(quest instanceof Quest)) {
       throw Error(
-        "Invalid user object. User object cannot be null and must be an instance of the User class."
+        "Invalid quest object. Quest object cannot be null and must be an instance of the Quest class."
       );
     }
 
-    const userObject = user.toPlainJavaScriptObject();
+    const questObject = quest.toPlainJavaScriptObject();
 
-    const docRef = await addDoc(collection(db, "users"), userObject);
+    const docRef = await addDoc(collection(db, "quests"), questObject);
 
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
@@ -27,46 +26,23 @@ async function addNewQuery(user) {
   }
 }
 
-/** Takes a User Javascript Class Object and overwrites the corresponding Firebase user document
- *  (according to the uid), or creates a new Firebase user document if it doesn't already exist.
- *    @note the given uid is from the user that you passed in (i.e., user.uid)
+/** Gets a quest from the Firebase with the given id and returns a Quest JavaScript Class Object.
  *
- *    @params user: Javascript Class Object
- *    @returns void
+ *    @params id: string
+ *    @returns quest: Quest
  */
-async function setUserDoc(user) {
+export async function getQuestById(id) {
   try {
-    if (!user || !(user instanceof User)) {
-      throw Error(
-        "Invalid user object. User object cannot be null and must be an instance of the User class."
-      );
+    if (!id || typeof id !== "string") {
+      throw Error("Invalid quest id. Quest id must be a non-empty string.");
     }
 
-    const userObject = user.toPlainJavaScriptObject();
+    const questDocSnap = await getDoc(doc(db, "quests", id));
 
-    await setDoc(doc(db, "users", user.uid), userObject);
-  } catch (e) {
-    console.error("Error setting (adding) document: ", e);
-  }
-}
-
-/** Gets a user from the Firebase with the given uid and returns a User JavaScript Class Object.
- *
- *    @params uid: string
- *    @returns user: User
- */
-async function getUserById(uid) {
-  try {
-    if (!uid || typeof uid !== "string") {
-      throw Error("Invalid user id. User id must be a non-empty string.");
-    }
-
-    const userDocSnap = await getDoc(doc(db, "users", uid));
-
-    if (userDocSnap.exists()) {
-      const userGotten = userDocSnap.data();
-      console.log({ userGotten: userGotten });
-      return transformFbUserToJsUser(uid, userGotten);
+    if (questDocSnap.exists()) {
+      const questGotten = questDocSnap.data();
+      console.log({ questGotten: questGotten });
+      return transformFbQuestToJsQuest(id, questGotten);
     } else {
       throw Error("No such document!");
     }
@@ -74,18 +50,3 @@ async function getUserById(uid) {
     console.error("Error getting document: ", e);
   }
 }
-
-/** Testing below */
-
-// const user = new User(
-//   "69",
-//   "Testing set doc for adding a new user",
-//   "test@berkeley.edu",
-//   "12/18/1999",
-//   "they/them"
-// );
-// console.log(user);
-
-// await setUserDoc(user);
-
-// getUserById("123456789").then((result) => console.log(result));

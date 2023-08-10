@@ -29,7 +29,12 @@ export function transformFbQuestToJsQuest(id, questObject) {
     id,
     questObject.hostUid,
     questObject.date,
-    questObject.location
+    questObject.time,
+    questObject.ageGroup,
+    questObject.rsvpLimit,
+    questObject.restaurant,
+    questObject.outdoorSpot,
+    questObject.planOfAction
   );
 }
 
