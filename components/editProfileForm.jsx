@@ -91,7 +91,7 @@ const editProfileForm = ({ navigation }) => {
     // alert(JSON.stringify(values, null, 2));
     const currentUID = authService.currUID();
     getUserById(currentUID).then(userData => {
-      console.log(values.Pets);
+      console.log(values);
       const newUserObject = new User(
         userData.uid,
         userData.name,
