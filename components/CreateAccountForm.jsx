@@ -91,22 +91,15 @@ const CreateAccountForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    // console.log(values);
+    console.log(values);
     //alert(JSON.stringify(values, null, 2));
-    try {
-      const result = await authService.SignUp(
-        values.name,
-        values.email,
-        values.password,
-        values.birthday,
-        values.pronouns
-      );
-      if (result && result.isSuccess) {
-        navigation.navigate("BuildProfile");
-      }
-    } catch (error) {
-      alert(`Error signing up: ${error}. Please try again.`);
-    }
+    await authService.SignUp(
+      values.name,
+      values.email,
+      values.password,
+      values.birthday,
+      values.pronouns
+    );
   };
 
   return (
@@ -170,6 +163,7 @@ const CreateAccountForm = ({ navigation }) => {
             <Button
               onPress={() => {
                 formikProps.handleSubmit();
+                navigation.navigate("BuildProfile");
               }}
               mode="contained"
               style={styles.button}
@@ -193,7 +187,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: 0.5,
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },

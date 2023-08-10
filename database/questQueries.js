@@ -116,3 +116,45 @@ export async function getAttendingQuestsByUid(uid) {
     console.error("Error getting document: ", e);
   }
 }
+
+/** Gets available quests, aka, quests that the user isn't already attending.
+ *
+ *    @params uid: string
+ *    @returns listOfQuests: Quest[]
+ */
+export async function getAvailableQuestsByUid(uid) {
+  try {
+    let allQuests = [];
+    const allQuestsQuerySnapshot = await getDocs(collection(db, "quests"));
+    allQuestsQuerySnapshot.forEach((doc) => {
+      const questGotten = doc.data();
+      const questId = doc.id;
+      // console.log(questId, " => ", questGotten);
+      allQuests.push(transformFbQuestToJsQuest(questId, questGotten));
+    });
+
+    // !arr.includes('d')
+    let listofAvailableQuests = allQuests.filter(
+      (item) => !item.listOfAttendingUsers.includes(uid)
+    );
+
+    // let listOfQuests = [];
+    // const q = query(
+    //   collection(db, "quests"),
+    //   where("listOfAttendingUsers", "array-contains", uid)
+    // );
+
+    // const querySnapshot = await getDocs(q);
+    // // console.log(querySnapshot);
+    // querySnapshot.forEach((questDoc) => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   const questGotten = questDoc.data();
+    //   const questId = questDoc.id;
+    //   console.log(questId, " => ", questGotten);
+    //   listOfQuests.push(transformFbQuestToJsQuest(questId, questGotten));
+    // });
+    return listofAvailableQuests;
+  } catch (e) {
+    console.error("Error getting document: ", e);
+  }
+}

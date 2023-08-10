@@ -58,9 +58,33 @@ class authService {
     } else {
       return null;
     }
-  }
+  };
 
-  /** static GetUserData = async(uid) => {
+  /** static currName = () => {
+    const currUser = FIREBASE_AUTH.currentUser;
+    if (currUser) {
+      return currUser.displayName;
+    } else {
+      return null;
+    }
+  }*/
+
+  /**static updateDisplayName = async (newName) => {
+    const currUser = FIREBASE_AUTH.currentUser;
+    currUser
+      .updateProfile({
+        displayName: newName,
+      })
+      .then(() => {
+        console.log(currUser.displayName);
+      })
+      .catch((error) => {
+        console.error('Error updating display name:', error.message);
+      });
+  }*/
+}
+
+/** static GetUserData = async(uid) => {
     await getUserById(uid)
     .then((userRecord) => {
       // See the UserRecord reference doc for the contents of userRecord.
@@ -70,6 +94,5 @@ class authService {
       console.log('Error fetching user data:', error);
     });
   } */
-}
 
 export default authService;

@@ -37,11 +37,10 @@ export default function App() {
           <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="BuildProfile" component={BuildProfile} />
           <Stack.Screen name="UserProfile" component={UserProfile} />
-
+          <Stack.Screen name="CreateQuest" component={CreateQuest} />
           <Stack.Screen name="LayoutScreen" component={LayoutScreen} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Explore" component={MyBottomNavigation} />
-          <Stack.Screen name="CreateQuest" component={CreateQuest} />
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Profile" component={Profile} />
           {/* <Stack.Screen name="GemAcquisition" component={GemAcquisition} /> */}

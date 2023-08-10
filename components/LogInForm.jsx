@@ -3,7 +3,6 @@ import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
 import authService from "../authService.jsx";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

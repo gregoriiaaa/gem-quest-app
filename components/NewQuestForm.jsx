@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { TextInput, Text, Button, Picker } from "react-native-paper";
+import { TextInput, Text, Button } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
-//import CalendarPicker from 'react-native-calendar-picker';
+import Quest from "../classes/Quest";
+import authService from "../authService.jsx";
+import { addNewQuest } from "../database/questQueries";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -48,7 +50,7 @@ const TextInputLiveFeedback = ({
   );
 };
 
-const QuestForm = ({ navigation }) => {
+const NewQuestFrom = ({ navigation }) => {
   const initialValues = {
     title: "",
     date: "",
@@ -57,22 +59,18 @@ const QuestForm = ({ navigation }) => {
     rsvplimit: "",
     restaurant: "",
     outdoorspace: "",
-    planofaction: "",
+    plan: "",
   };
 
   const validationSchema = Yup.object({
     title: Yup.string()
       .min(2, "Must be at least 2 characters")
       .max(40, "Must be less than 40 characters")
-      .required("Event title is required")
-      .matches(
-        /^([a-zA-Z]+)?$/,
-        "Please enter a valid title using only letters"
-      ),
+      .required("Event title is required"),
     date: Yup.string()
       .required("Event date is required")
       .matches(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{4}$/,
+        /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/,
         "Must be in the format: MM/DD/YYYY"
       ),
     time: Yup.string()
@@ -87,25 +85,25 @@ const QuestForm = ({ navigation }) => {
   });
 
   const handleSubmit = async (values) => {
-    await sleep(500);
     console.log(values);
-    alert(JSON.stringify(values, null, 2));
+    const currentUID = authService.currUID();
+    const newQuestObject = new Quest(
+      "",
+      values.title,
+      currentUID,
+      values.date,
+      values.time,
+      values.agegroup,
+      values.rsvplimit,
+      values.restaurant,
+      values.outdoorspace,
+      values.planofaction,
+      []
+    )
+    console.log(newQuestObject);
+    addNewQuest(newQuestObject);
+    //alert(JSON.stringify(values, null, 2));
   };
-
-  const ageList = [
-    {
-      label: "18-20",
-      value: "18-20",
-    },
-    {
-      label: "21-25",
-      value: "21-25",
-    },
-    {
-      label: "25+",
-      value: "25+",
-    },
-  ]
 
   return (
     <Formik
@@ -115,43 +113,59 @@ const QuestForm = ({ navigation }) => {
     >
       {(formikProps) => (
         <View>
-          <TextInputLiveFeedback
-            label="Title"
-            formikProps={formikProps}
-            formikKey="title"
-            placeholder="Enter your event title..."
-          />
+            <TextInputLiveFeedback
+                label="Title"
+                formikProps={formikProps}
+                formikKey="title"
+                placeholder="Enter your event title..."
+            />
 
-          <TextInputLiveFeedback
-            label="Date"
-            formikProps={formikProps}
-            formikKey="date"
-            placeholder="MM/DD/YYYY"
-          />
+            <TextInputLiveFeedback
+                label="Date"
+                formikProps={formikProps}
+                formikKey="date"
+                placeholder="MM/DD/YYYY"
+            />
 
-          <TextInputLiveFeedback
-            label="Time"
-            formikProps={formikProps}
-            formikKey="time"
-            placeholder="00:00am"
-          />
+            <TextInputLiveFeedback
+                label="Time"
+                formikProps={formikProps}
+                formikKey="time"
+                placeholder="00:00am"
+            />
 
-          <TextInputLiveFeedback
-            label="Password"
-            formikProps={formikProps}
-            formikKey="password"
-            secureTextEntry={true}
-          />
+            <TextInputLiveFeedback
+                label="Age Group"
+                formikProps={formikProps}
+                formikKey="agegroup"
+            />
 
-          <TextInputLiveFeedback
-            label="Confirm Password"
-            formikProps={formikProps}
-            formikKey="confirmpassword"
-            secureTextEntry={true}
-          />
+            <TextInputLiveFeedback
+                label="RSVP limit"
+                formikProps={formikProps}
+                formikKey="rsvplimit"
+            />
+
+            <TextInputLiveFeedback
+                label="Restaurant"
+                formikProps={formikProps}
+                formikKey="restaurant"
+            />
+
+            <TextInputLiveFeedback
+                label="Outdoor Space"
+                formikProps={formikProps}
+                formikKey="outdoorspace"
+            />
+
+            <TextInputLiveFeedback
+                label="Plan of Action"
+                formikProps={formikProps}
+                formikKey="planofaction"
+            />
           <View style={styles.buttonContainer}>
             <Button
-              onPress={() => navigation.navigate("Welcome Screen")}
+              onPress={() => navigation.navigate("LayoutScreen")}
               mode="outlined"
               style={styles.button}
               icon="arrow-left"
@@ -159,7 +173,10 @@ const QuestForm = ({ navigation }) => {
               Back
             </Button>
             <Button
-              onPress={formikProps.handleSubmit}
+              onPress={async () => {
+                await formikProps.handleSubmit();
+                navigation.navigate("Home");
+              }}
               mode="contained"
               style={styles.button}
               buttonColor="#21005D"
@@ -182,7 +199,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: ".5em",
+    marginTop: .5,
     fontWeight: "700",
     color: "#56595D",
   },
@@ -206,4 +223,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuestForm;
+export default NewQuestFrom;
