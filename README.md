@@ -25,10 +25,11 @@ A social networking app for GeMs (gender minorities)!
 3. Run the App
    - If using npm: `npm run web`
    - If using Expo:
-     - First, ensure you have the Expo CLI installed: :`npm install -g expo-cli`
+     - First, ensure you have the Expo CLI installed: `npm install -g expo-cli`
      - `expo start --web`
 4. Access the App in Your Browser
    - To view the app as intended for mobile:
+     - Make sure you are in light mode! When in dark mode, the colors change to ones we don't intend for.
      - Right-click on the webpage and select 'Inspect' or 'Inspect Element'.
      - Within the developer tools panel, locate and click on the icon that represents a mobile device (often called "Toggle Device Toolbar" in browsers like Chrome).
      - From the device dropdown list, select 'iPhone SE' to simulate the mobile view as intended.
