@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
   signUpText: {
     marginTop: 10,
     fontStyle: "italic",
-    fontSize: "x-small",
   },
   signUpLink: {
     color: "#21005D",

@@ -30,6 +30,7 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={styles.imageContainer}>
         <Image
           source={require("../assets/gemQuest.png")}
+          alt="GemQuest logo showcasing pride colors"
           style={styles.image}
           resizeMode="contain"
         ></Image>
@@ -91,7 +92,6 @@ const styles = StyleSheet.create({
   forgotPassword: {
     marginTop: 10,
     fontStyle: "italic",
-    fontSize: "x-small",
   },
 });
 

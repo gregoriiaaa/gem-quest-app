@@ -15,7 +15,11 @@ const Header = ({ navigation }) => {
   return (
     <Appbar.Header elevated={true}>
       <TouchableOpacity onPress={() => navigation.navigate("Welcome Screen")}>
-        <Image source={require("../assets/logo.png")} style={styles.image} />
+        <Image
+          source={require("../assets/logo.png")}
+          alt="GemQuest logo showcasing pride colors"
+          style={styles.image}
+        />
       </TouchableOpacity>
     </Appbar.Header>
   );
