@@ -187,20 +187,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   inputField: {
-    marginTop: .5,
+    marginTop: 0.5,
     fontWeight: "700",
     color: "#56595D",
   },
   button: {
     marginVertical: 2,
     borderRadius: 5,
-    marginTop: "1em",
-    width: "150px",
+    marginTop: 1,
+    width: 150,
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: "2em",
+    marginTop: 2,
   },
   buttonText: {
     color: "white",

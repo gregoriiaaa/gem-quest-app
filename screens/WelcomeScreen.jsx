@@ -30,6 +30,7 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={styles.imageContainer}>
         <Image
           source={require("../assets/gemQuest.png")}
+          alt="GemQuest logo showcasing pride colors"
           style={styles.image}
           resizeMode="contain"
         ></Image>
@@ -54,12 +55,6 @@ const WelcomeScreen = ({ navigation }) => {
         <Text style={styles.forgotPassword} textColor="#21005D">
           Forgot password?
         </Text>
-        {/* ADDED THE FOLLOWING BUTTON FOR ACCESS TO THE NAV BAR LOGGIN IN */}
-        {/* <Button
-          style={styles.button}
-          mode="outlined"
-          onPress={handleLayoutPress}
-        ></Button> */}
       </View>
     </View>
   );
@@ -91,7 +86,6 @@ const styles = StyleSheet.create({
   forgotPassword: {
     marginTop: 10,
     fontStyle: "italic",
-    fontSize: "x-small",
   },
 });
 

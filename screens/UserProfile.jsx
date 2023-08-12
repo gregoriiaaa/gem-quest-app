@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Image,
 } from "react-native";
 import { Text, Button, Avatar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";

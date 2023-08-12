@@ -4,7 +4,6 @@ import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import LogInForm from "../components/LogInForm";
 
 const LogIn = ({ navigation }) => {
-
   const handleLogoPress = () => {
     navigation.navigate("Welcome Screen");
   };

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import { Avatar } from "react-native-paper";
 import CreateAccountForm from "../components/CreateAccountForm";
 
@@ -21,25 +28,30 @@ const NewUser = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.userProfileImage} onPress={toggleAvatar}>
-        {showAvatar ? (
-          <Avatar.Image
-            size={100}
-            source={require("../assets/userAvatar.png")}
-          />
-        ) : (
-          <Avatar.Icon
-            style={styles.userIcon}
-            size={100}
-            icon="file-image-plus-outline"
-          />
-        )}
-      </TouchableOpacity>
-      <View style={styles.newUserForm}>
-        <CreateAccountForm navigation={navigation} />
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <TouchableOpacity
+          style={styles.userProfileImage}
+          onPress={toggleAvatar}
+        >
+          {showAvatar ? (
+            <Avatar.Image
+              size={100}
+              source={require("../assets/userAvatar.png")}
+            />
+          ) : (
+            <Avatar.Icon
+              style={styles.userIcon}
+              size={100}
+              icon="file-image-plus-outline"
+            />
+          )}
+        </TouchableOpacity>
+        <View style={styles.newUserForm}>
+          <CreateAccountForm navigation={navigation} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -47,7 +59,13 @@ const styles = StyleSheet.create({
   container: {
     flex: "1",
     padding: 20,
+    paddingTop: StatusBar.currentHeight,
   },
+  scrollView: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
+
   userProfileImage: {
     height: "15%",
     alignItems: "center",
