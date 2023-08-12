@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TouchableOpacity, View, StyleSheet, ScrollView } from "react-native";
-import {
-  Avatar,
-  Button,
-  Card,
-  Text,
-  TouchableRipple,
-} from "react-native-paper";
+import { Card, Text, TouchableRipple } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getAttendingQuestsByUid } from "../database/questQueries";
 import authService from "../authService.jsx";

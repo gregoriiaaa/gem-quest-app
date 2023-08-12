@@ -55,12 +55,6 @@ const WelcomeScreen = ({ navigation }) => {
         <Text style={styles.forgotPassword} textColor="#21005D">
           Forgot password?
         </Text>
-        {/* ADDED THE FOLLOWING BUTTON FOR ACCESS TO THE NAV BAR LOGGIN IN */}
-        {/* <Button
-          style={styles.button}
-          mode="outlined"
-          onPress={handleLayoutPress}
-        ></Button> */}
       </View>
     </View>
   );

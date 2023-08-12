@@ -89,41 +89,6 @@ const AvailableQuests = () => {
             </Card>
           </TouchableRipple>
         ))}
-
-        {/* <TouchableRipple
-          onPress={() => console.log("Pressed")}
-          rippleColor="rgba(0, 0, 0, .32)"
-        >
-          <Card elevation={4} style={styles.card}>
-            <Card.Cover
-              source={{
-                uri: "https://source.unsplash.com/random/700/?Cityscape",
-                alt: "Random image of Cityscape area by unsplash images",
-              }}
-            />
-            <Card.Title
-              title="Attending"
-              titleVariant="titleMedium"
-              subtitle="This friday at 1:20PM"
-            />
-            <Card.Content>
-              <Text style={styles.bold} variant="bodyLarge">
-                Potluck at the Glade
-              </Text>
-              <Text variant="bodyMedium">RSVP: 2/3</Text>
-              <Text variant="bodyMedium">Hosted by: [Name of other.user]</Text>
-            </Card.Content>
-            <Card.Actions style={styles.cardActions}>
-              <TouchableOpacity onPress={handleLikePress}>
-                <Icon
-                  name={isLiked ? "cards-heart" : "cards-heart-outline"}
-                  size={28}
-                  color="black"
-                />
-              </TouchableOpacity>
-            </Card.Actions>
-          </Card>
-        </TouchableRipple> */}
       </ScrollView>
     </View>
   );
