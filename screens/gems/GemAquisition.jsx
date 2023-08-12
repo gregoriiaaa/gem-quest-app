@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
 import { Button } from "react-native-paper";
 
@@ -24,6 +25,8 @@ const GemsIcons = {
  * @returns {SafeAreaView} GemAcquisition
  */
 const GemAcquisition = (props) => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textLayout}>
@@ -33,14 +36,24 @@ const GemAcquisition = (props) => {
         <View style={styles.acquisitionBox}>
           <Text style={styles.acquired}>You've Acquired:</Text>
           <View style={styles.gemBox}>
-            <Text style={[styles.acquiredGem, { color: "#ec8bee"}]}>
+            <Text style={[styles.acquiredGem, { color: "#ec8bee" }]}>
               AMETHYST
             </Text>
-            <Image alt="newly-acquired-gem" style={styles.gemIcon} source={GemsIcons.Amethyst}></Image>
+            <Image
+              alt="newly-acquired-gem"
+              style={styles.gemIcon}
+              source={GemsIcons.Amethyst}
+            ></Image>
           </View>
         </View>
         {/* Continue button (TODO: navigate to right page) */}
-        <Button mode="contained" onPress={() => console.log("Pressed")}>
+        <Button
+          mode="contained"
+          onPress={() => {
+            console.log("Pressed");
+            navigation.goBack();
+          }}
+        >
           tap to continue
         </Button>
       </View>

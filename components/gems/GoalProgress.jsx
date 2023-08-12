@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
 import { View, Text, StyleSheet, Pressable } from "react-native";
@@ -29,6 +30,7 @@ const GoalProgress = (props) => {
    */
   const [progress, setProgress] = useState(props.progress);
   const [claimed, setClaimed] = useState("CLAIM");
+  const navigation = useNavigation();
 
   return (
     <Pressable
@@ -36,6 +38,7 @@ const GoalProgress = (props) => {
         if (props.progress === props.maxProgress) {
           console.log("do gem acq logic here");
           setClaimed("CLAIMED");
+          navigation.navigate("GemAcquisition");
         }
       }}
     >

@@ -18,7 +18,7 @@ import CreateQuest from "./screens/CreateQuest";
 import Gems from "./screens/Gems";
 import Profile from "./screens/Profile";
 import LogIn from "./screens/LogIn";
-// import GemAcquisition from "./screens/gems/GemAquisition";
+import GemAcquisition from "./screens/gems/GemAquisition";
 
 {
   /* Source: 
@@ -32,6 +32,7 @@ export default function App() {
       <NavigationContainer>
         {/*Put Inside Stack.Navigator to remove nav bar: screenOptions={{ headerShown: false }} */}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* Ordering matters! */}
           <Stack.Screen name="Welcome Screen" component={WelcomeScreen} />
           <Stack.Screen name="Create Account" component={NewUser} />
           <Stack.Screen name="LogIn" component={LogIn} />
@@ -41,9 +42,9 @@ export default function App() {
           <Stack.Screen name="LayoutScreen" component={LayoutScreen} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Explore" component={MyBottomNavigation} />
+          <Stack.Screen name="GemAcquisition" component={GemAcquisition} />
           <Stack.Screen name="Gems" component={Gems} />
           <Stack.Screen name="Profile" component={Profile} />
-          {/* <Stack.Screen name="GemAcquisition" component={GemAcquisition} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
